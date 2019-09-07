@@ -15,15 +15,15 @@ except:
     install_requires.append('cupy')
 
 setup(
-    name='SparseTorch',
+    name='SpeedTorch',
     version='0.0.1',
     packages=find_packages(),
-    url='https://github.com/Santosh-Gupta/SparseTorch',
+    url='https://github.com/Santosh-Gupta/SpeedTorch',
     license='MIT',
     author='Santosh Gupta',
     author_email='SanGupta.ML@gmail.com',
-    description='SP',
-    long_description='None so far',
+    description='Fast Pinned CPU -> GPU transfer',
+    long_description='Fast Pinned CPU -> GPU transfer',
     long_description_content_taype='text/markdown',
     python_requires='>=3.5.0',
     install_requires=install_requires,
