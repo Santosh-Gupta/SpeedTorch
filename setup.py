@@ -8,11 +8,12 @@ with codecs.open('requirements.txt', 'r', 'utf8') as reader:
     install_requires = list(map(lambda x: x.strip(), reader.readlines()))
     
 try:
-  import cupy
+    import cupy
 except:
-    print('Cupy not installed. Package will install cupy, which will take several minutes')
-    print('If you would like to install Cupy yourself, check here https://docs-cupy.chainer.org/en/stable/install.html#install-cupy')
-    install_requires.append('cupy')
+    print('CuPy is not available. Please install it manually: https://docs-cupy.chainer.org/en/stable/install.html#install-cupy')
+#     print('Cupy not installed. Package will install cupy, which will take several minutes')
+#     print('If you would like to install Cupy yourself, check here https://docs-cupy.chainer.org/en/stable/install.html#install-cupy')
+#     install_requires.append('cupy')
 
 setup(
     name='SpeedTorch',
