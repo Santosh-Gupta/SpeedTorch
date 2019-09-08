@@ -14,9 +14,9 @@ class _GPUPytorchCommon():
 
     def _getReshapedRetrieval( self, retrievedPosIndexes , retrievedNegIndexes = None):
         if not retrievedNegIndexes is None:
-            reshapedRetrieval =  np.concatenate( [ retrievedPosIndexes.flatten() , retrievedNegIndexes.flatten() ] )
+            reshapedRetrieval =  np.concatenate( [ retrievedPosIndexes.reshape(-1) , retrievedNegIndexes.reshape(-1)] )
         else:
-            reshapedRetrieval = retrievedPosIndexes.flatten()
+            reshapedRetrieval = retrievedPosIndexes.reshape(-1)
         return reshapedRetrieval
 
 class GPUPytorchModelFactory(_GPUPytorchCommon):
