@@ -44,9 +44,9 @@ class _Common():
 
     def _getReshapedRetrieval( self, retrievedPosIndexes , retrievedNegIndexes = None):
         if not retrievedNegIndexes is None:
-            reshapedRetrieval =  np.concatenate( [ retrievedPosIndexes.flatten( order = 'C' ) , retrievedNegIndexes.flatten( order = 'C' ) ] )
+            reshapedRetrieval =  np.concatenate( [ retrievedPosIndexes.flatten() , retrievedNegIndexes.flatten() ] )
         else:
-            reshapedRetrieval = retrievedPosIndexes.flatten( order = 'C' )
+            reshapedRetrieval = retrievedPosIndexes.flatten()
         return reshapedRetrieval
 
 class ModelFactory(_Common):
