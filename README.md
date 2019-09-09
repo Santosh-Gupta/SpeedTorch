@@ -35,6 +35,10 @@ Applying SpeedTorch to word2vec
 
 https://colab.research.google.com/drive/1cYb6f3DD1FP2PVSZaC8Jz8uP3BgoR7oe
 
+## Need Help?
+
+Either open an issue, or chat with me directory on Gitter here https://gitter.im/SpeedTorch
+
 ### Documentation 
 
 ## Class
