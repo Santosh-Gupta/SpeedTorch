@@ -37,6 +37,10 @@ Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's var
 
 ## Guide
 
+### Augment training parameters via CPU storage
+
+In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy memmaps, and transfer those parameters to your model tensors as needed. 
+
 ## Examples
 
 Applying SpeedTorch to word2vec
