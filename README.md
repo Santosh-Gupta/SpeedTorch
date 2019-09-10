@@ -18,7 +18,7 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Incoporage SpeedTorch into your data pipelines for data transfer to GPU
 
-🏎️    Increase training speed of existing pipelines (my favorite trick with SpeedTorch, see below for details)
+🏎️    Increase training speed of existing pipelines (my favorite trick with SpeedTorch, see below for details). Increases speed of numpy -> cuda mounted pytorch tensors by __%. 
 
 🏎️    Augment training parameters via CPU storage
 
@@ -30,7 +30,8 @@ Somehow
 
 Speed up existing numpy -> gpu pipelines. 
 Sometimes it can be tricky to completly convert your pipeline from numpy. Though converting your numpy indexes to cuda mounted int64 pytorch variables during each of your training steps can add non-trivial time to your training. Luckily SpeedTorch has a solution to speed up your training while keeping your existing pipelines. 
-Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's variable switchers to just switch in and out embeddings during every training step, and you can just use a static dummy variable for inputs for each training step. 
+
+Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's variable switchers to just switch in and out embeddings during every training step, and you can just use a static dummy variable for inputs for each training step. The last sentence probably won't make sense the first time reading it ( I'm still working on reducing the learning curve for this library), but check out this example. And come to library's Gitter with your questions. 
 
 
 ## Benchmarks
