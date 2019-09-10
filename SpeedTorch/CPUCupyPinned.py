@@ -37,7 +37,7 @@ class _Common():
         return self.CUPYmemmap
 
     def saveCupy(self, saveFileName):
-        cupy.save( 'saveFileName', self.CUPYmemmap)
+        cupy.save( saveFileName, self.CUPYmemmap)
 
     def getNumpyVersion(self):
         return cupy.asnumpy(self.CUPYmemmap)
