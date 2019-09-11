@@ -24,6 +24,11 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Use any optimizer you want for embeddings training (Adamax, RMSProp, etc.). Previously, only SpraseAdam, Adagrad, and SGD were suitable since they support sprase gradients. 
 
+## Bench marks
+
+Here is a notebook comparing transfer via Cupy Memory maps with Pytorch tensors, but pinned CPU and Cuda mounted. 
+https://colab.research.google.com/drive/1hDXDAuPYkR9-f23GTj170Dde0S5KDxG4
+
 ## How it works?
 
 Somehow 
