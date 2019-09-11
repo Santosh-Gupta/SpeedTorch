@@ -29,6 +29,7 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 Here is a notebook comparing transfer via Cupy Memory maps with Pytorch tensors, but pinned CPU and Cuda mounted. 
 https://colab.research.google.com/drive/1hDXDAuPYkR9-f23GTj170Dde0S5KDxG4
 
+
 ## How it works?
 
 Somehow 
@@ -38,8 +39,6 @@ Sometimes it can be tricky to completly convert your pipeline from numpy. Though
 
 Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's variable switchers to just switch in and out embeddings during every training step, and you can just use a static dummy variable for inputs for each training step. The last sentence probably won't make sense the first time reading it ( I'm still working on reducing the learning curve for this library), but check out this example. And come to library's Gitter with your questions. 
 
-
-## Benchmarks
 
 ## Guide
 
