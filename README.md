@@ -8,7 +8,7 @@ Library for fastest pinned CPU -> GPU transfer
 
 This library revovles around Cupy memmaps pinned to CPU, which can achieve _ % faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can. 
 
-## Inspiration?
+## Inspiration
 
 I initially created this library to help train large numbers of embeddings, which the GPU may have trouble holding in RAM. In order to do this, I found that by hosting some of the embeddings on the CPU can help achieve this. Embedding systems use sprase training; only fraction of the total prameters participate in the forward/update steps, the rest are idle. So I figured, 'why not keep the idle parameters off the GPU during the training step?' For this I need fast CPU -> GPU transfer. 
 
@@ -26,8 +26,8 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 ## Bench marks
 
-Here is a notebook comparing transfer via Cupy Memory maps with Pytorch tensors, but pinned CPU and Cuda mounted. 
-https://colab.research.google.com/drive/1hDXDAuPYkR9-f23GTj170Dde0S5KDxG4
+Here is a notebook comparing transfer via Cupy with Pytorch tensors, with both pinned CPU and Cuda. 
+https://colab.research.google.com/drive/1xPtFMt-Mdq9FVEx9UrV_arpXKZ96xh0s
 
 
 ## How it works?
