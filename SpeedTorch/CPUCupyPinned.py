@@ -7,7 +7,7 @@ import os
 from torch.utils.dlpack import to_dlpack
 from torch.utils.dlpack import from_dlpack
 
-class PMemory(cupy.cuda.memory.BaseMemory):
+class PMemoryMM(cupy.cuda.memory.BaseMemory):
     def __init__(self, size):
         self.size = size
         self.device_id = cupy.cuda.device.get_device_id()
