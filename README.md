@@ -59,7 +59,7 @@ The table below is a summary of the results. Transfering data from Cuda Pytorch 
 
 Although SpeedTorch's tensors are generally faster than Pytorch's, the drawback is SpeedTorch's tensors use more memory. However, because tranferring data can happen more quickly, you can use SpeedTorch to augment the number of embeddings trained in your architecture by holding parameters in both the GPU And CPU. 
 
-This table is a summary of benchmarking done in Google Colab. From my experience, there seems to be some variation in the reported memory values in Colab, +-.50 gb, so keep this in mind while reviewing these numbers. 
+This table is a summary of benchmarking done in Google Colab. From my experience, there seems to be some variation in the reported memory values in Colab, +-0.30 gb, so keep this in mind while reviewing these numbers. 
 
 |Tensor Type	| CPU (gb)	| GPU (gb)|
 | --- | --- | --- |
