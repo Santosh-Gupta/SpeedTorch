@@ -100,10 +100,10 @@ Either open an issue, or chat with me directory on Gitter here https://gitter.im
 
 ### Documentation 
 
-## Class
+## Class ModelFactory
 
 ```python
-ModelFactory(model_variable,  total_classes,  embed_dimension, diskname = 'variable', datatype = 'float32', CPUPinn = False):
+ModelFactory(model_variable,  total_classes,  embed_dimension, datatype = 'float32', CPUPinn = False)
 ```
 
 Creates switchers for model variables. Switches variables from your full embedding collection and your model batch collection. Each variable needs its own switcher. 
@@ -153,7 +153,7 @@ Creates switchers for optimizer variables. Switches variables from your full emb
 Example:
 
 ```python
-uAdagrad_switcher = SpeedTorch.OptimizerFactory( optimizer, total_classes=50000, embed_dimension=128, model=skip_gram_modelSparse, variable_name= 'u_embeddings' )
+uAdagrad_switcher = SpeedTorch.OptimizerFactory(given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32', CPUPinn = False)
 ```
 
 Arguments:
