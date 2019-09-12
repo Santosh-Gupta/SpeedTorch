@@ -43,7 +43,7 @@ https://colab.research.google.com/drive/1xPtFMt-Mdq9FVEx9UrV_arpXKZ96xh0s
 | Pytorch(cuda)	| 0.0302	| 6.4x slower than SpeedTorch Equivilent |
 | Pytorch(PinnedCPU)	| 2.8842	| 370x slower than SpeedTorch Equivilent |
 		
-| Tensor Type	| Sum to/from Cuda Pytorch Variable	| Comparison |
+| Tensor Type	| Sum  of to/from Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
 | CupyMemmap(cuda)	| 0.0151	| 2.1x faster than Pytorch Equivilent |
 | CupyMemmap(PinnedCPU)	| 0.0232	| 127x faster than Pytroch Equivilent |
