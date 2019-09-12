@@ -203,7 +203,6 @@ class OptimizerFactory(_Common): #to do later, able to load matrixes to continue
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(my_pinned_allocator)
 
-        self._preInit()
         self.CUPYcorpi = []
         for optVar in self.optVarList:
             self.CUPYcorpi.append( cupy.zeros( shape =( self.total_classes, self.embed_dimension), dtype=self.datatype) )
