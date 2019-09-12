@@ -26,8 +26,12 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 ## Bench marks
 
+### Speed
+
 Here is a notebook comparing transfer via Cupy with Pytorch tensors, with both pinned CPU and Cuda. 
 https://colab.research.google.com/drive/1xPtFMt-Mdq9FVEx9UrV_arpXKZ96xh0s
+
+The table below is a summary of the results. Transfering data between Cuda Pytorch tensors is faster than SpeedTorch, but for all other transfer types, SpeedTorch is faster, and a step of both transfering to/from 
 
 | Tensor Type	| To Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
