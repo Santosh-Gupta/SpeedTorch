@@ -18,7 +18,7 @@ class PMemory(cupy.cuda.memory.BaseMemory):
         if self.ptr:
             cupy.cuda.runtime.freeHost(self.ptr)
 
-def my_pinned_allocator(bsize):
+def my_pinned_allocatorMM(bsize):
     return cupy.cuda.memory.MemoryPointer(PMemory(bsize),0)
 
 class _CommonMM():
