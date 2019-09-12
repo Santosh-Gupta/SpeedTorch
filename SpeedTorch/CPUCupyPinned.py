@@ -337,11 +337,12 @@ class COM(_Common):
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(None)
         
-class DataGadget():
-    def __init__(self, Numpyfilename):
+class DataGadget(_Common):
+    def __init__(self, fileName, CPUPinn=False):
         self.Numpyfilename = Numpyfilename
+        self.CPUPinn = CPUPinn
 
-    def gadgetInit(self, CPUPinn=False):
+    def gadgetInit(self):
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(my_pinned_allocator)
 
@@ -350,5 +351,5 @@ class DataGadget():
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(None)
 
-    def getData(self):
+    def getData(self, retrievedPosIndexes , retrievedNegIndexes = None):
         return from_dlpack( self.CUPYmemmap[ reshapedRetrieval ].toDlpack() )
