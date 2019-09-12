@@ -1,11 +1,11 @@
 
-from SpeedTorch.CPUCupyPinned import PMemory
-from SpeedTorch.CPUCupyPinned import my_pinned_allocator
-from SpeedTorch.CPUCupyPinned import _Common
-from SpeedTorch.CPUCupyPinned import ModelFactory
-from SpeedTorch.CPUCupyPinned import OptimizerFactory
-from SpeedTorch.CPUCupyPinned import COM
-from SpeedTorch.CPUCupyPinned import DataGadget
+from SpeedTorch.CUPYLive import PMemory
+from SpeedTorch.CUPYLive import my_pinned_allocator
+from SpeedTorch.CUPYLive import _Common
+from SpeedTorch.CUPYLive import ModelFactory
+from SpeedTorch.CUPYLive import OptimizerFactory
+from SpeedTorch.CUPYLive import COM
+from SpeedTorch.CUPYLive import DataGadget
 
 from SpeedTorch.GPUTorch import _GPUPytorchCommon
 from SpeedTorch.GPUTorch import GPUPytorchModelFactory
