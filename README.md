@@ -29,6 +29,27 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 Here is a notebook comparing transfer via Cupy with Pytorch tensors, with both pinned CPU and Cuda. 
 https://colab.research.google.com/drive/1xPtFMt-Mdq9FVEx9UrV_arpXKZ96xh0s
 
+| Tensor Type	| To Cuda Pytorch Variable	| Comparison |
+| --- | --- | --- |
+| Cupy(cuda)	| 0.0104	| 5.6x slower than Pytorch Equivilent |
+| Cupy(PinnedCPU)	| 0.0154	| 4.4x faster than Pytorch Equivilent |
+| Pytorch(cuda)	| 0.0019	| 5.6x faster than SpeedTorch Equivilent |
+| Pytorch(PinnedCPU)	| 0.0678	| 4.4x slower than SpeedTorch Equivilent |
+		
+| Tensor Type	| From Cuda Pytorch Variable	| Comparison |
+| --- | --- | --- |
+| Cupy(cuda)	| 0.0047	| 6.4x faster than Pytorch Equivilent |
+| Cupy(PinnedCPU)	| 0.0078	| 370x faster than Pytorch Equivilent |
+| Pytorch(cuda)	| 0.0302	| 6.4x slower than SpeedTorch Equivilent |
+| Pytorch(PinnedCPU)	| 2.8842	| 370x slower than SpeedTorch Equivilent |
+		
+| Tensor Type	| Sum to/from Cuda Pytorch Variable	| Comparison |
+| --- | --- | --- |
+| CupyMemmap(cuda)	| 0.0151	| 2.1x faster than Pytorch Equivilent |
+| CupyMemmap(PinnedCPU)	| 0.0232	| 127x faster than Pytroch Equivilent |
+| Pytorch(cuda)	| 0.0321	| 2.1x slower than SpeedTorch Equivilent |
+| Pytorch(PinnedCPU)	| 2.952	| 127x slower than SpeedTorch Equivilent |
+
 
 ## How it works?
 
