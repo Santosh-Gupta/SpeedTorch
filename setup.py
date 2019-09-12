@@ -17,7 +17,7 @@ except:
 
 setup(
     name='SpeedTorch',
-    version='0.0.7',
+    version='0.0.8',
     packages=find_packages(),
     url='https://github.com/Santosh-Gupta/SpeedTorch',
     license='MIT',
