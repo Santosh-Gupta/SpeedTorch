@@ -21,7 +21,7 @@ class PMemory(cupy.cuda.memory.BaseMemory):
 def my_pinned_allocator(bsize):
     return cupy.cuda.memory.MemoryPointer(PMemory(bsize),0)
 
-class _Common():
+class _CommonMM():
     def _preInit(self):
         fileNumber = 0
         while os.path.isfile( self.diskname + str(fileNumber) + '.memmap.cpy.npy'  ) == True:
@@ -49,7 +49,7 @@ class _Common():
             reshapedRetrieval = retrievedPosIndexes.reshape(-1)
         return reshapedRetrieval
 
-class ModelFactory(_Common):
+class ModelFactoryMM(_CommonMM):
 
     def __init__(self, model_variable,  total_classes,  embed_dimension, diskname = 'variable', datatype = 'float32', CPUPinn = False):
         self.model_variable = model_variable
@@ -159,7 +159,7 @@ class ModelFactory(_Common):
             cupy.fromDlpack( to_dlpack( self.model_variable.weight.data ) ) )
         
     
-class OptimizerFactory(_Common): #to do later, able to load matrixes to continue training
+class OptimizerFactoryMM(_CommonMM): #to do later, able to load matrixes to continue training
 #take into account different size embedding matrices 
 
     def __init__(self, given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32' , CPUPinn = False):
@@ -307,7 +307,7 @@ class OptimizerFactory(_Common): #to do later, able to load matrixes to continue
             self.CUPYmemmap[idx][ reshapedRetrieval ] = (
                 cupy.fromDlpack( to_dlpack( self.given_optimizer.state_dict()['state'][ self.optimizerKey ][optVar] ) )  )
     
-class COM(_Common):
+class COMMM(_CommonMM):
 
     def __init__(self, total_classes, diskname = 'COM', datatype = 'uint32', CPUPinn = False  ):
         self.total_classes = total_classes
@@ -337,7 +337,7 @@ class COM(_Common):
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(None)
         
-class DataGadget(_Common):
+class DataGadgetMM(_CommonMM):
     def __init__(self, fileName, CPUPinn=False):
         self.Numpyfilename = Numpyfilename
         self.CPUPinn = CPUPinn
