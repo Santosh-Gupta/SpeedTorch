@@ -215,13 +215,13 @@ class OptimizerFactory(_Common): #to do later, able to load matrixes to continue
 
         for idx, optVar in enumerate(self.optVarList):
             self.given_optimizer.state_dict()['state'][ self.optimizerKey ][optVar] = (
-                from_dlpack( self.CUPYmemmap[idx][ reshapedRetrieval ].toDlpack() )   )
+                from_dlpack( self.CUPYcorpi[idx][ reshapedRetrieval ].toDlpack() )   )
 
     def afterOptimizerStep(self, retrievedPosIndexes , retrievedNegIndexes = None):
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         for idx, optVar in enumerate(self.optVarList):
-            self.CUPYmemmap[idx][ reshapedRetrieval ] = (
+            self.CUPYcorpi[idx][ reshapedRetrieval ] = (
                 cupy.fromDlpack( to_dlpack( self.given_optimizer.state_dict()['state'][ self.optimizerKey ][optVar] ) )  )
     
 class COM(_Common):
