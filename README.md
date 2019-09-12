@@ -142,7 +142,7 @@ Methods:
 
 `afterOptimizerStep( retrievedPosIndexes , retrievedNegIndexes = None)`: Switches updated embeddings from your model to the full embeddings collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
 
-## Class
+## Class OptimizerFactory
 
 ```pyton
 OptimizerFactory( given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32' , CPUPinn = False)
