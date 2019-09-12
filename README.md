@@ -18,8 +18,6 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Incoporage SpeedTorch into your data pipelines for data transfer to GPU
 
-🏎️    Increase training speed of existing pipelines (my favorite trick with SpeedTorch, see below for details). Increases speed of numpy -> cuda mounted pytorch tensors by __%. 
-
 🏎️    Augment training parameters via CPU storage
 
 🏎️    Use any optimizer you want for embeddings training (Adamax, RMSProp, etc.). Previously, only SpraseAdam, Adagrad, and SGD were suitable since they support sprase gradients. 
