@@ -24,14 +24,15 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Use any optimizer you want for embeddings training (Adamax, RMSProp, etc.). Previously, only SpraseAdam, Adagrad, and SGD were suitable since they support sprase gradients. 
 
-## Bench marks
+## Benchmarks
 
 ### Speed
 
 Here is a notebook comparing transfer via Cupy with Pytorch tensors, with both pinned CPU and Cuda. 
 https://colab.research.google.com/drive/1xPtFMt-Mdq9FVEx9UrV_arpXKZ96xh0s
+This notebook times data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy and Pytorch variables, each holding 1,000,000 float32 embeddings of dimension 128. 
 
-The table below is a summary of the results. Transfering data between Cuda Pytorch tensors is faster than SpeedTorch, but for all other transfer types, SpeedTorch is faster, and a step of both transfering to/from 
+The table below is a summary of the results. Transfering data from Cuda Pytorch tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equiviliant, but for all other transfer types, SpeedTorch is faster. For the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivilant, for both the regular GPU and CPU Pinned tensors. 
 
 | Tensor Type	| To Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
@@ -54,6 +55,20 @@ The table below is a summary of the results. Transfering data between Cuda Pytor
 | Pytorch(cuda)	| 0.0321	| 2.1x slower than SpeedTorch Equivilent |
 | Pytorch(PinnedCPU)	| 2.952	| 127x slower than SpeedTorch Equivilent |
 
+### Memory 
+
+Although SpeedTorch's tensors are faster than Pytorch's, the drawback is SpeedTorch's tensors use more memory. This table is a summary of benchmarking done in Google Colab. From my experience, there seems to be some variation in the reported memory values in Colab, +-.50 gb, so keep this in mind while reviewing these numbers. 
+
+|Tensor Type	| CPU (gb)	| GPU (gb)|
+| --- | --- | --- |
+|Cupy PinnedCPU |	9.93 |	0.06|
+|Pytorch PinnedCPU |	6.59 |	0.32|
+|Cupy Cuda |	0.39 |	9.61|
+|Pytorch Cuda |	1.82 |	5.09|
+
+This is the notebook I used for measuring how much memory each variable type takes. 
+https://colab.research.google.com/drive/1ZKY7PyuPAIDrnx2HdtbujWo8JuY0XkuE
+If using this in Colab, you will need to restart the enviroment after each tensor creation, to get an accurate measure for the next tensor. 
 
 ## How it works?
 
