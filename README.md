@@ -1,4 +1,3 @@
-# Are optimizers on CPU or GPU? do bench marking to/from optimizers. Are optimizer weights float32 or float64
 
 # SpeedTorch
 
@@ -54,6 +53,10 @@ The table below is a summary of the results. Transfering data from Cuda Pytorch 
 | Cupy(PinnedCPU)	| 0.0232	| 127x faster than Pytroch Equivilent |
 | Pytorch(cuda)	| 0.0321	| 2.1x slower than SpeedTorch Equivilent |
 | Pytorch(PinnedCPU)	| 2.952	| 127x slower than SpeedTorch Equivilent |
+
+Similar benchmarks were calculated for transfering to/from Pytorch Cuda optimizers. The results are basically the same, here is the notebook used for the optimizers benchmarking
+
+https://colab.research.google.com/drive/1Y2nehd8Xj-ixfjkj2QWuA_UjQjBBHhJ5
 
 ### Memory 
 
