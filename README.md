@@ -1,4 +1,4 @@
-#Are optimizers on CPU or GPU? do bench marking to/from optimizers. 
+# Are optimizers on CPU or GPU? do bench marking to/from optimizers. Are optimizer weights float32 or float64
 
 # SpeedTorch
 
