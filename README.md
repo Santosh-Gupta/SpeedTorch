@@ -1,5 +1,4 @@
-Are optimizers on CPU or GPU?
-To bench marking to/from optimizers. 
+#Are optimizers on CPU or GPU? do bench marking to/from optimizers. 
 
 # SpeedTorch
 
