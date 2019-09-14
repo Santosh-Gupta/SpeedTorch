@@ -93,6 +93,16 @@ Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's var
 
 ## Guide
 
+### Get Started
+
+SpeedTorch is pip installable. You need to have Cupy installed and imported before you import SpeedTorch. 
+
+```
+!pip install SpeedTorch
+import cupy
+import SpeedTorch
+```
+
 ### Using SpeedTorch to use non-sparse optimizers (in this case, Adamax) in Word2vec
 
 For people first trying to figure out how to use SpeedTorch, I recommend following this example, since word2vec is one of the more commonly known algorithms in machine learning. 
