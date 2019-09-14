@@ -109,6 +109,14 @@ import cupy
 import SpeedTorch
 ```
 
+### Using SpeedTorch to increase speed transfer of data from CPU to GPU
+
+This colab notebook shows how to load data into SpeedTorch using its Data Gadget, and how to transfer this data to/from a Pytorch cuda variable. 
+
+https://colab.research.google.com/drive/185Z5Gi62AZxh-EeMfrTtjqxEifHOBXxF
+
+Please see the speed benchmarking notebook to see the speed advantage of using SpeedTorch. 
+
 ### Using SpeedTorch to use non-sparse optimizers (in this case, Adamax) in Word2vec
 
 For people first trying to figure out how to use SpeedTorch, I recommend following this example, since word2vec is one of the more commonly known algorithms in machine learning. 
