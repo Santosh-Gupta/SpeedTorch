@@ -237,7 +237,7 @@ class COM(_Common):
         self.CUPYCom = cupy.zeros( shape =( self.total_classes, self.total_classes), dtype=self.datatype)
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(None)
-        
+    
 class DataGadget(_Common):
     def __init__(self, fileName, CPUPinn=False):
         self.fileName = fileName
@@ -252,6 +252,12 @@ class DataGadget(_Common):
         if self.CPUPinn == True:
             cupy.cuda.set_allocator(None)
 
-    def getData(self, retrievedPosIndexes , retrievedNegIndexes = None):
-        reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
-        return from_dlpack( self.CUPYcorpus[ reshapedRetrieval ].toDlpack() )
+    def getData(self, indexes):
+        return from_dlpack( self.CUPYcorpus[indexes].toDlpack() )
+
+    def insertData(self, dataObject, indexes):
+         self.CUPYcorpus[indexes] =  (
+            cupy.fromDlpack( to_dlpack( dataObject ) ) )
+    
+    
+    
