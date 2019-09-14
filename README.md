@@ -17,7 +17,7 @@ I initially created this library to help train large numbers of embeddings, whic
 
 With fast CPU->GPU, a lot of fun methods can be developed for functionalities which previously people thought may not have been possible. 
 
-🏎️    Incoporage SpeedTorch into your data pipelines for data transfer to GPU
+🏎️    Incorporate SpeedTorch into your data pipelines for data transfer to GPU
 
 🏎️    Augment training parameters via CPU storage
 
@@ -87,9 +87,17 @@ Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's var
 
 ## Guide
 
+###Using SpeedTorch to use non-sparse optimizers (in this case, Adamax) in Word2vec
+
+For people first trying to figure out how to use SpeedTorch, I recommend following this example, since word2vec is one of the more commonly known algorithms in machine learning. 
+
+https://colab.research.google.com/drive/1ApJR3onbgQWM3FBcBKMvwaGXIDXlDXOt
+
+The notebook shows how to train word2vec the regular way, then shows how to use SpeedTorch to train on the same data, using one of the optimizers normally not supported for sparse training. 
+
 ### Augment training parameters via CPU storage
 
-In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy memmaps, and transfer those parameters to your model tensors as needed. 
+In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy arrays, and transfer those parameters to your model tensors as needed. This has allowed me to increase the size of the embeddings I have used in two projects. 
 
 ## Examples
 
