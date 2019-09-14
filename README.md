@@ -27,7 +27,7 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Augment training parameters via CPU storage
 
-🏎️    Use any optimizer you want for embeddings training (Adamax, RMSProp, etc.). Previously, only SpraseAdam, Adagrad, and SGD were suitable since they support sprase gradients. 
+🏎️    Use Adadelta, Adamax, RMSprop, Rprop, ASGD, AdamW, and Adam optimizers for embeddings training. Previously, only SpraseAdam, Adagrad, and SGD were suitable since they directly support sprase gradients. 
 
 ## Benchmarks
 
