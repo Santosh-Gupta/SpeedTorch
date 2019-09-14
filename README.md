@@ -13,7 +13,7 @@ Library for fastest pinned CPU -> GPU Pytorch transfer
 
 ## What is it?
 
-This library revovles around Cupy memmaps pinned to CPU, which can achieve _ % faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can. 
+This library revovles around Cupy memmaps pinned to CPU, which can achieve **110x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can. 
 
 ## Inspiration
 
