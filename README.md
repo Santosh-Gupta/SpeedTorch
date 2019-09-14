@@ -33,32 +33,32 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 ### Speed
 
-Here is a notebook comparing transfer via Cupy with Pytorch tensors, with both pinned CPU and Cuda. 
-https://colab.research.google.com/drive/1xPtFMt-Mdq9FVEx9UrV_arpXKZ96xh0s
+Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with both pinned CPU and Cuda. 
+https://colab.research.google.com/drive/1b3QpfSETePo-J2TjyO6D2LgTCjVrT1lu
 This notebook times data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy and Pytorch variables, each holding 1,000,000 float32 embeddings of dimension 128. 
 
-The table below is a summary of the results. Transfering data from Cuda Pytorch tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equiviliant, but for all other transfer types, SpeedTorch is faster. For the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivilant, for both the regular GPU and CPU Pinned tensors. 
+The table below is a summary of the results. Transfering data from Cuda Pytorch tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equiviliant, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivilant for both the regular GPU and CPU Pinned tensors, making SpeedTorch the better choice for Sp 
 
 | Tensor Type	| To Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
-| Cupy(cuda)	| 0.0104	| 5.6x slower than Pytorch Equivilent |
-| Cupy(PinnedCPU)	| 0.0154	| 4.4x faster than Pytorch Equivilent |
-| Pytorch(cuda)	| 0.0019	| 5.6x faster than SpeedTorch Equivilent |
-| Pytorch(PinnedCPU)	| 0.0678	| 4.4x slower than SpeedTorch Equivilent |
+| SpeedTorch(cuda)	| 0.0143	| 6.8x Slower than Pytorch Equivalent |
+| SpeedTorch(PinnedCPU)	| 0.0254	| 4.0x Faster than Pytorch Equivalent |
+| Pytorch(cuda)	| 0.0021	| 6.8x Faster than SpeedTorch Equivalent |
+| Pytorch(PinnedCPU)	| 0.1012	| 4.0x Slower than SpeedTorch Equivalent |
 		
 | Tensor Type	| From Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
-| Cupy(cuda)	| 0.0047	| 6.4x faster than Pytorch Equivilent |
-| Cupy(PinnedCPU)	| 0.0078	| 370x faster than Pytorch Equivilent |
-| Pytorch(cuda)	| 0.0302	| 6.4x slower than SpeedTorch Equivilent |
-| Pytorch(PinnedCPU)	| 2.8842	| 370x slower than SpeedTorch Equivilent |
+| SpeedTorch(cuda)	| 0.0036	| 12.3x Faster than Pytorch Equivalent |
+| SpeedTorch(PinnedCPU)	| 0.0255	| 110.6x Faster than Pytorch Equivalent |
+| Pytorch(cuda)	| 0.0442	| 12.3x Slower than SpeedTorch Equivalent |
+| Pytorch(PinnedCPU)	| 2.8211	| 110.6x Slower than SpeedTorch Equivalent |
 		
 | Tensor Type	| Sum  of to/from Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
-| Cupy(cuda)	| 0.0151	| 2.1x faster than Pytorch Equivilent |
-| Cupy(PinnedCPU)	| 0.0232	| 127x faster than Pytroch Equivilent |
-| Pytorch(cuda)	| 0.0321	| 2.1x slower than SpeedTorch Equivilent |
-| Pytorch(PinnedCPU)	| 2.952	| 127x slower than SpeedTorch Equivilent |
+| SpeedTorch(cuda)	| 0.0179	| 2.6x Faster than Pytorch Equivalent |
+| SpeedTorch(PinnedCPU)	| 0.0509	| 57.4x Faster than Pytorch Equivalent |
+| Pytorch(cuda)	| 0.0463	| 2.6x Slower than SpeedTorch Equivalent |
+| Pytorch(PinnedCPU)	| 2.9223	| 57.4x Slower than SpeedTorch Equivalent |
 
 Similar benchmarks were calculated for transfering to/from Pytorch Cuda optimizers. The results are basically the same, here is the notebook used for the optimizers benchmarking
 
