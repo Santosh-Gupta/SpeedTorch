@@ -163,9 +163,9 @@ Using the orthodox training method, the largest embedding size that colab is abl
 
 1) Whenever using the Cupy GPU tensors, initialize these before any pinned CPU tensors. This is because the initialization of the Cupy GPU tensors seem to uses a solid amount of CPU RAM. So if you're limited on CPU RAM, and you already have your pinned CPU tensors in memory, then initializing the cupy GPU tensors may cause a crash. 
 
-2) If you're able to fit all of your parameters in your GPU memory, go with that as this is the fastest option. But if you can't, split your parameters (keep in mind that your optimizers also have weights) between SpeedTorch's Cupy cuda tensors and SpeedTorch's pinned CPU tensors, this is the 2nd fastest options. But, if you're still not able to fit all your parameters that way, then split your parameters between SpeedTorch's Cupy pinned CPU tensors, and SpeedTorch's Pytorch cuda tensors; this is slower than the 2nd option, but is more GPU memory efficient. 
+2) If you're able to fit all of your parameters in your GPU memory, use pure Pytorch since this is the fastest option for training. But if you can't fit all your parameters in memory, split your parameters (keep in mind that your optimizers also have weights) between SpeedTorch's Cupy cuda tensors and SpeedTorch's Cupy pinned CPU tensors; this is the 2nd fastest options. But, if you're still not able to fit all your parameters into memory that way, then split your parameters between SpeedTorch's Cupy pinned CPU tensors, and SpeedTorch's Pytorch cuda tensors; this is slower than both options, but uses less GPU memory.
 
-3) After training, saving any cuda variables will cause an increase in memory usage, and may cause a crash if you're at the limits of your RAM. In this case, use the `getNumpyVersion` method to get a numpy version of your tensor, and then use use numpy.save or hdpy/pytables to save your numpy array. 
+3) After training, saving any cuda variables will cause an increase in memory usage, and may cause a crash, especially with Cupy. If you're at the limits of your RAM. In this case, use the `getNumpyVersion` method to get a numpy version of your tensor, and then use use numpy.save or hdpy/pytables to save your numpy array. Numpy save is more lightweight. 
 
 ## Need Help?
 
@@ -180,6 +180,8 @@ I am looking incoporate more functionalities around the fast CPU -> GPU transfer
 In addition the the Cupy GPU/pinned CPU and Pytorch GPU tensors, SpeedTorch also has Pytorch pinned CPU tensors, and Cupy memmap GPU/pinned CPU tensors. I have not found a solid use for these sorts of tensors, but they're fully coded and availible for use. 
 
 https://github.com/Santosh-Gupta/SpeedTorch/tree/master/SpeedTorch
+
+One area I would like to look at is if there is a way to have RAM memory reduction by using Cupy Memmaps. So far they uses just as much memory as the live versions. 
 
 ## Documentation 
 
