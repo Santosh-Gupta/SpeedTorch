@@ -93,7 +93,7 @@ If using this in Colab, you will need to restart the enviroment after each tenso
 
 ## How it works?
 
-I am not exactly sure why Cupy arrays are generally better for data transfer to/from Pytorch variables. As for how the memory management in Cupy works, I direct to these two stackoverflow questions I asked, where brilliant user Robert Crovella not only gave detailed explanations, but also figured out how to allocate pineed memory to Cupy arrays by developing his own memory allocator for Cupy. This is basically the core technology behind SpeedTorch. 
+I am not exactly sure why Cupy arrays are generally better for data transfer to/from Pytorch variables. As for how the memory management in Cupy works, I direct to these two stackoverflow questions I asked, where brilliant user Robert Crovella not only gave detailed explanations, but also figured out how to allocate pinned memory to Cupy arrays by developing his own memory allocator for Cupy. This is basically the core technology behind SpeedTorch. 
 
 https://stackoverflow.com/questions/57750125/cupy-outofmemoryerror-when-trying-to-cupy-load-larger-dimension-npy-files-in-me
 
