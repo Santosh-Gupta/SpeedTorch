@@ -152,7 +152,7 @@ https://github.com/Santosh-Gupta/Lit2Vec2
 https://devpost.com/software/lit2vec2
 
 Each book had an embedding of size of 400, but an embedding size of 496 could have been used, the 400 embedding size was due to limits of space on my Google Drive to store the trained embeddings :(. But the limits of the GPU RAM is no longer an issue :)
-Here is a directly link to a demo training notebook which trains using the 496 embedding size using SpeedTorch
+Here is a direct link to a demo training notebook, which trains with a 496 embedding size using SpeedTorch
 
 NOTE: You need the version of the Colab notebook that has 25 gb of RAM, instead of the usual 12 gb. To get this type of instance, you need to crash your current instance due to overwhelming the RAM, and then a note in the bottom left corner asking if you would like to upgrade. You can do this by making a loop that keeps doubling the size of a numpy float matrix. 
 
