@@ -140,6 +140,7 @@ this step only takes 0.02-0.03 seconds with SpeedTorch!
 
 SpeedTorch was used in training 2,829,853 books for a rare book recommender.
 https://github.com/Santosh-Gupta/Lit2Vec2
+https://devpost.com/software/lit2vec2
 Each book had an embedding of size of 400, but an embedding size of 496 could have been used, the 400 embedding size was due to limits of space on my Google Drive to store the trained embeddings :(. But the limits of the GPU RAM is no longer an issue :)
 Here is a directly link to a demo training notebook which trains using the 496 embedding size using SpeedTorch
 https://colab.research.google.com/drive/1AqhT-HetihXMET1wJQROrC3Q9tFJqJ19
