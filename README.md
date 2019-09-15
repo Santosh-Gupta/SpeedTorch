@@ -17,13 +17,13 @@ This library revovles around Cupy memmaps pinned to CPU, which can achieve **110
 
 ## Inspiration
 
-I initially created this library to help train large numbers of embeddings, which the GPU may have trouble holding in RAM. In order to do this, I found that by hosting some of the embeddings on the CPU can help achieve this. Embedding systems use sprase training; only fraction of the total prameters participate in the forward/update steps, the rest are idle. So I figured, 'why not keep the idle parameters off the GPU during the training step?' For this I need fast CPU -> GPU transfer. 
+I initially created this library to help train large numbers of embeddings, which the GPU may have trouble holding in RAM. In order to do this, I found that by hosting some of the embeddings on the CPU can help achieve this. Embedding systems use sprase training; only fraction of the total prameters participate in the forward/update steps, the rest are idle. So I figured, why not keep the idle parameters off the GPU during the training step? For this, I needed fast CPU -> GPU transfer. 
 
 ## What can fast CPU->GPU do for me? (more that you might initially think)
 
 With fast CPU->GPU, a lot of fun methods can be developed for functionalities which previously people thought may not have been possible. 
 
-🏎️    Incorporate SpeedTorch into your data pipelines for data transfer to GPU
+🏎️    Incorporate SpeedTorch into your data pipelines for fast data transfer to/from CPU <-> GPU
 
 🏎️    Augment training parameters via CPU storage
 
@@ -138,12 +138,19 @@ this step only takes 0.02-0.03 seconds with SpeedTorch!
 
 SpeedTorch was used in training 2,829,853 books for a rare book recommender.
 https://github.com/Santosh-Gupta/Lit2Vec2
-Each book had an embedding of size of 400. 
+Each book had an embedding of size of 400, but an embedding size of 496 could have been used, the 400 embedding size was due to limits of space on my Google Drive to store the trained embeddings :(. But the limits of the GPU RAM is no longer an issue :)
+Here is a directly link to a demo training notebook which trains using the 496 embedding size using SpeedTorch
+https://colab.research.google.com/drive/1AqhT-HetihXMET1wJQROrC3Q9tFJqJ19
 
-Here is a directly link to the training notebook
-https://colab.research.google.com/drive/1NL5ih4GUdpBufoiLTggxZ89BhulPASmX
+Here is a directly link with the same model and data, but doesn't use SpeedTorch
+https://colab.research.google.com/drive/1idV1jBOUZVPCfdsy40wIrRPHeDOanti_
+Using the orthodox training method, the largest embedding size that colab is able to handle is 255-260, any higher than that and cuda error will occur
 
+`RuntimeError: CUDA out of memory. Tried to allocate 2.74 GiB (GPU 0; 11.17 GiB total capacity; 8.22 GiB already allocated; 2.62 GiB free; 5.05 MiB cached)`
 
+### Best Practices
+
+Whenever using the Cupy GPU tensors, initialize these before any pinned CPU tensors. This is because the initialization of the Cupy GPU tensors seem to uses a solid amount of CPU RAM, so if you're limited on CPU RAM, and you already have your pinned CPU tensors in memory, then initializing the cupy GPU tensors pay cause a crash. 
 
 
 
