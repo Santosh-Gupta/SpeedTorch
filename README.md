@@ -138,7 +138,7 @@ this step only takes 0.02-0.03 seconds with SpeedTorch!
 
 **Case Uses**
 
--2,829,853 book embeddings
+-2,829,853 book embeddings-
 
 SpeedTorch was used in training 2,829,853 books for a rare book recommender.
 
@@ -149,15 +149,21 @@ https://devpost.com/software/lit2vec2
 Each book had an embedding of size of 400, but an embedding size of 496 could have been used, the 400 embedding size was due to limits of space on my Google Drive to store the trained embeddings :(. But the limits of the GPU RAM is no longer an issue :)
 Here is a directly link to a demo training notebook which trains using the 496 embedding size using SpeedTorch
 
+NOTE: You need the version of the Colab notebook that has 25 gb of RAM, instead of the usual 12 gb. To get this type of instance, you need to crash your current instance due to overwhelming the RAM, and then a note in the bottom left corner asking if you would like to upgrade. You can do this by making a loop that keeps doubling the size of a numpy float matrix. 
+
 https://colab.research.google.com/drive/1AqhT-HetihXMET1wJQROrC3Q9tFJqJ19
 
 Here is a directly link with the same model and data, but doesn't use SpeedTorch
 
 https://colab.research.google.com/drive/1idV1jBOUZVPCfdsy40wIrRPHeDOanti_
 
-Using the orthodox training method, the largest embedding size that colab is able to handle is 255-260, any higher than that and cuda error will occur
+Using the orthodox training method, the largest embedding size that colab is able to handle is 255-260, any higher than that and a cuda error will occur
 
 `RuntimeError: CUDA out of memory. Tried to allocate 2.74 GiB (GPU 0; 11.17 GiB total capacity; 8.22 GiB already allocated; 2.62 GiB free; 5.05 MiB cached)`
+
+-14,886,544 research paper embeddings-
+
+
 
 ### Best Practices
 
