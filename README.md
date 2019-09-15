@@ -135,9 +135,9 @@ The notebook shows how to train word2vec the regular way, then shows how to use 
 
 tl;dr:
 
-Normal training: Pytorch embedding variables contain all embeddings. Pytorch optimizer contain all the corresponding parameter weights for each embedding. 
+**Normal training**: Pytorch embedding variables contain all embeddings. Pytorch optimizer contain all the corresponding parameter weights for each embedding. 
 
-SpeedTorch traing: Pytorch embeddng variables only contain a batch of embeddings. Pytorch optimizer only contains all the corresponding parameter weights for that batch. SparseTorch tensors contain the rest, and exchanges the embeddings/weights with the Pytorch variable at each step. 
+**SpeedTorch traing**: Pytorch embeddng variables only contain a batch of embeddings. Pytorch optimizer only contains all the corresponding parameter weights for that batch. SparseTorch tensors contain the rest, and exchanges the embeddings/weights with the Pytorch variable at each step. 
 
 In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy arrays, and transfer those parameters to your model tensors as needed. Doing this primary in Pytorch would be very slow, especially because transferring parameters between a Cuda mounted Pytorch variable and a pinned CPU pytorch tensor can take 2.5-3 seconds (on Google Colab). fortunately,
 this step only takes 0.02-0.03 seconds with SpeedTorch!
