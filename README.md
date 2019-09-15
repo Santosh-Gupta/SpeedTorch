@@ -166,9 +166,9 @@ Either open an issue, or chat with me directory on Gitter here https://gitter.im
 
 I am looking incoporate more functionalities around the fast CPU -> GPU transfer. If you have an idea, please post a Github Issue. 
 
-### Documentation 
+## Documentation 
 
-## Class ModelFactory
+### Class ModelFactory
 
 ```python
 ModelFactory(model_variable,  total_classes,  embed_dimension, datatype = 'float32', CPUPinn = False)
@@ -210,7 +210,7 @@ Methods:
 
 `afterOptimizerStep( retrievedPosIndexes , retrievedNegIndexes = None)`: Switches updated embeddings from your model to the full embeddings collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
 
-## Class OptimizerFactory
+### Class OptimizerFactory
 
 ```pyton
 OptimizerFactory( given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32' , CPUPinn = False)
