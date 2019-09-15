@@ -89,13 +89,11 @@ If using this in Colab, you will need to restart the enviroment after each tenso
 
 ## How it works?
 
-Somehow 
+I am not exactly sure why Cupy arrays are generally better for data transfer to/from Pytorch variables. As how the memory management in Cupy works, I direct to these two stackoverflow questions I asked, where brilliant user Robert Crovella not only gave detailed explanations, but figured out how to allocate pineed memory to Cupy arrays by developing his own memory allocator for Cupy. 
 
-Speed up existing numpy -> gpu pipelines. 
-Sometimes it can be tricky to completly convert your pipeline from numpy. Though converting your numpy indexes to cuda mounted int64 pytorch variables during each of your training steps can add non-trivial time to your training. Luckily SpeedTorch has a solution to speed up your training while keeping your existing pipelines. 
+https://stackoverflow.com/questions/57750125/cupy-outofmemoryerror-when-trying-to-cupy-load-larger-dimension-npy-files-in-me
 
-Cupy memaps can accept int32 numpy indexes, so you can just use SpeedTorch's variable switchers to just switch in and out embeddings during every training step, and you can just use a static dummy variable for inputs for each training step. The last sentence probably won't make sense the first time reading it ( I'm still working on reducing the learning curve for this library), but check out this example. And come to library's Gitter with your questions. 
-
+https://stackoverflow.com/questions/57752516/how-to-use-cuda-pinned-zero-copy-memory-for-a-memory-mapped-file
 
 ## Guide
 
