@@ -37,7 +37,7 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 ### Speed
 
-Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with both pinned CPU and Cuda tensors. 
+Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with both pinned CPU and Cuda tensors. All tests were done with a colab instance with a Tesla K80 GPU.
 
 https://colab.research.google.com/drive/1b3QpfSETePo-J2TjyO6D2LgTCjVrT1lu
 
@@ -163,7 +163,19 @@ Using the orthodox training method, the largest embedding size that colab is abl
 
 -14,886,544 research paper embeddings-
 
+https://github.com/Santosh-Gupta/Research2Vec2
 
+SpeedTorch can allow me to train 14,886,544 research paper embeddings at an embedding size of 188, by allowing my to store my target embeddings on the CPU, while keeping my context embeddings on the GPU (SGD optimizer was used, so there are no optimizer weights). 
+
+Here is a direct link to the notebook. 
+
+https://colab.research.google.com/drive/1saKzsaHoy6O_U1DF_z15_Qkr5YLNI_GR
+
+NOTE: You need the version of the Colab notebook that has 25 gb of RAM, instead of the usual 12 gb. To get this type of instance, you need to crash your current instance due to overwhelming the RAM, and then a note in the bottom left corner asking if you would like to upgrade. You can do this by making a loop that keeps doubling the size of a numpy float matrix. 
+
+Without SpeedTorch, only an embedding size of 94-96 can be used on Google Colab Tesla K80 GPU before an `RuntimeError: CUDA out of memory` error. Here is a version of the training without using SpeedTorch. 
+
+https://colab.research.google.com/drive/1jh7RUgeajhdWdGNfWG3Twm1ZjyTQU0KR
 
 ### Best Practices
 
