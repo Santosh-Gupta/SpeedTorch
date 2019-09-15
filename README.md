@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="https://i.imgur.com/IjG1h2v.png">
+  <img src="https://i.imgur.com/FKgPbsC.png">
 </p>
 
 # SpeedTorch
