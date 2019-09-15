@@ -390,3 +390,12 @@ Methods:
 
 `afterOptimizerStep( retrievedPosIndexes , retrievedNegIndexes = None)`: Switches optimizer variable weights from your optimizer to the full weights collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
 
+## Citing SpeedTorch:
+If you use SpeedTorch in your research or wish to cite, please cite with:
+
+@misc{
+  title={SpeedTorch},
+  author={Santosh Gupta},
+  howpublished={\url{github.com/Santosh-Gupta/SpeedTorch}},
+  year={2019}
+}
