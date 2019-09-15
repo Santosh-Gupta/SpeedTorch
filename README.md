@@ -44,6 +44,8 @@ The table below is a summary of the results. Transfering data from  Pytorch cuda
 
 I have noticed that different instances of Colab result in different speed results, so keep this in mind while reviewing these results. A personal run of the colab notebook may result in different values, though the order of magnetude of the results are generally the same. 
 
+The transfer times in the following tables are given in seconds. 
+
 | Tensor Type	| To Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
 | SpeedTorch(cuda)	| 0.0143	| 6.8x Slower than Pytorch Equivalent |
