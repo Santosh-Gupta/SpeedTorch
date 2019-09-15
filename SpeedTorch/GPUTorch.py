@@ -10,7 +10,7 @@ class _GPUPytorchCommon():
         torch.save(self.pytorchGPUVar, saveFileName)
 
     def getNumpyVersion(self):
-        return self.pytorchGPUVar
+        return self.pytorchGPUVar.cpu().numpy()
 
     def _getReshapedRetrieval( self, retrievedPosIndexes , retrievedNegIndexes = None):
         if not retrievedNegIndexes is None:
