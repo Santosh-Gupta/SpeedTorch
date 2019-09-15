@@ -84,7 +84,7 @@ This table is a summary of benchmarking done in Google Colab. From my experience
 |Cupy Cuda |	0.39 |	9.61|
 |Pytorch Cuda |	1.82 |	5.09|
 
-Although Pytorch's time to/from a Pytorch GPU tensor and a Pytorch cuda Variable is not as fast and Cupy's, the speed is still workable, so if memory is still a concern, a best of both worlds approach would be to SpeedTorch's Cupy CPU Pinned Tensors to store parameters on the CPU, and SpeedTorch's Pytorch GPU tensors to store parameters on the GPU. 
+Although Pytorch's time to/from for Pytorch GPU tensor <-> Pytorch cuda Variable is not as fast as the Cupy equivalent, the speed is still workable. So if memory is still a concern, a best of both worlds approach would be to SpeedTorch's Cupy CPU Pinned Tensors to store parameters on the CPU, and SpeedTorch's Pytorch GPU tensors to store parameters on the GPU. 
 
 This is the notebook I used for measuring how much memory each variable type takes. 
 https://colab.research.google.com/drive/1ZKY7PyuPAIDrnx2HdtbujWo8JuY0XkuE
