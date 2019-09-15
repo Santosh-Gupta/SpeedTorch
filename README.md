@@ -138,7 +138,7 @@ this step only takes 0.02-0.03 seconds with SpeedTorch!
 
 **Case Uses**
 
--2,829,853 book embeddings-
+--2,829,853 book embeddings--
 
 SpeedTorch was used in training 2,829,853 books for a rare book recommender.
 
@@ -161,7 +161,7 @@ Using the orthodox training method, the largest embedding size that colab is abl
 
 `RuntimeError: CUDA out of memory. Tried to allocate 2.74 GiB (GPU 0; 11.17 GiB total capacity; 8.22 GiB already allocated; 2.62 GiB free; 5.05 MiB cached)`
 
--14,886,544 research paper embeddings-
+--14,886,544 research paper embeddings--
 
 https://github.com/Santosh-Gupta/Research2Vec2
 
