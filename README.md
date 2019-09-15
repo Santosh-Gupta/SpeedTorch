@@ -115,6 +115,10 @@ This colab notebook shows how to load data into SpeedTorch using its Data Gadget
 
 https://colab.research.google.com/drive/185Z5Gi62AZxh-EeMfrTtjqxEifHOBXxF
 
+<p align="center">
+  <img src="https://i.imgur.com/Dc2DKsC.png">
+</p>
+
 Please see the speed benchmarking notebook to see the speed advantage of using SpeedTorch. 
 
 ### Using SpeedTorch to use non-sparse optimizers (in this case, Adamax) in Word2vec
