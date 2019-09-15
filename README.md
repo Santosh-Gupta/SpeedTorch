@@ -25,7 +25,7 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Incorporate SpeedTorch into your data pipelines for fast data transfer to/from CPU <-> GPU
 
-🏎️    Augment training parameters via CPU storage
+🏎️    Augment training parameters via CPU storage, by nearly double.
 
 🏎️    Use Adadelta, Adamax, RMSprop, Rprop, ASGD, AdamW, and Adam optimizers for embeddings training. Previously, only SpraseAdam, Adagrad, and SGD were suitable since they directly support sprase gradients. 
 
@@ -82,6 +82,8 @@ This table is a summary of benchmarking done in Google Colab. From my experience
 |Pytorch PinnedCPU |	6.59 |	0.32|
 |Cupy Cuda |	0.39 |	9.61|
 |Pytorch Cuda |	1.82 |	5.09|
+
+Although Pytorch's time to/from a Pytorch GPU tensor and a Pytorch cuda Variable is not as fast and Cupy's, the speed is still workable, so if memory is still a concern, a best of both worlds approach would be to SpeedTorch's Cupy CPU Pinned Tensors for CPU, and SpeedTorch's Pytorch GPU tensors for GPU. 
 
 This is the notebook I used for measuring how much memory each variable type takes. 
 https://colab.research.google.com/drive/1ZKY7PyuPAIDrnx2HdtbujWo8JuY0XkuE
@@ -150,17 +152,10 @@ Using the orthodox training method, the largest embedding size that colab is abl
 
 ### Best Practices
 
-Whenever using the Cupy GPU tensors, initialize these before any pinned CPU tensors. This is because the initialization of the Cupy GPU tensors seem to uses a solid amount of CPU RAM, so if you're limited on CPU RAM, and you already have your pinned CPU tensors in memory, then initializing the cupy GPU tensors pay cause a crash. 
+1) Whenever using the Cupy GPU tensors, initialize these before any pinned CPU tensors. This is because the initialization of the Cupy GPU tensors seem to uses a solid amount of CPU RAM. So if you're limited on CPU RAM, and you already have your pinned CPU tensors in memory, then initializing the cupy GPU tensors may cause a crash. 
 
+2) If you're able to fit all of your parameters in your GPU memory, go with that as this is the fastest option. But if you can't, split your parameters (keep in mind that your optimizers also have weights) between SpeedTorch's Cupy cuda tensors and SpeedTorch's pinned CPU tensors, this is the 2nd fastest options. But, if you're still not able to fit all your parameters that way, then split your parameters between SpeedTorch's Cupy pinned CPU tensors, and SpeedTorch's Pytorch cuda tensors; this is slower than the 2nd option, but is more GPU memory efficient. 
 
-
-This has allowed me to increase the size of the embeddings I have used in two projects. 
-
-## Examples
-
-Applying SpeedTorch to word2vec
-
-https://colab.research.google.com/drive/1cYb6f3DD1FP2PVSZaC8Jz8uP3BgoR7oe
 
 ## Need Help?
 
@@ -168,7 +163,7 @@ Either open an issue, or chat with me directory on Gitter here https://gitter.im
 
 ## Future Work
 
-Altough Pytorch cuda tensors about 2-3x slower than Cupy cuda tensors for a complete to/from transfer step to a Pytorch cuda variable, they take up less memory. So for those who have a bigger concern about the GPU memory than the training speed, a combination of CPU Pinned Cupy tensors and GPU Pytorch Tensors is most ideal. 
+I am looking incoporate more functionalities around the fast CPU -> GPU transfer. If you have an idea, please post a Github Issue. 
 
 ### Documentation 
 
