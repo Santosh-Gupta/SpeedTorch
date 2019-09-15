@@ -129,7 +129,7 @@ For people first trying to figure out how to use SpeedTorch, I recommend followi
 
 https://colab.research.google.com/drive/1ApJR3onbgQWM3FBcBKMvwaGXIDXlDXOt
 
-The notebook shows how to train word2vec the regular way, then shows how to use SpeedTorch to train on the same data, using one of the optimizers normally not supported for sparse training. 
+The notebook shows how to train word2vec the regular way, then shows how to use SpeedTorch to train on the same data, using one of the optimizers normally not supported for sparse training. This is possible because since all the embeddings contained in the embedding variable has an update during each step, you can set `sparse=False` during initialization. 
 
 ### Augment training parameters via CPU storage
 
