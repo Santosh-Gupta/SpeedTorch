@@ -40,7 +40,7 @@ https://colab.research.google.com/drive/1b3QpfSETePo-J2TjyO6D2LgTCjVrT1lu
 
 This notebook times the data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy/Pytorch tensors and Pytorch variables.
 
-The table below is a summary of the results. Transfering data from  Pytorch cuda tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equiviliant, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivilant for both the regular GPU and CPU Pinned tensors, making SpeedTorch the better choice for Sparse training. 
+The table below is a summary of the results. Transfering data from  Pytorch cuda tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equiviliant, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivilant for both the regular GPU and CPU Pinned tensors. 
 
 I have noticed that different instances of Colab result in different speed results, so keep this in mind while reviewing these results. A personal run of the colab notebook may result in different values, though the order of magnetude of the results are generally the same. 
 
