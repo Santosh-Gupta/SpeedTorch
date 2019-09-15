@@ -97,7 +97,7 @@ https://stackoverflow.com/questions/57752516/how-to-use-cuda-pinned-zero-copy-me
 
 ## Guide
 
-### Get Started
+### Geting Started
 
 SpeedTorch is pip installable. You need to have Cupy installed and imported before you import SpeedTorch. 
 
@@ -129,7 +129,25 @@ The notebook shows how to train word2vec the regular way, then shows how to use 
 
 ### Augment training parameters via CPU storage
 
-In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy arrays, and transfer those parameters to your model tensors as needed. This has allowed me to increase the size of the embeddings I have used in two projects. 
+In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy arrays, and transfer those parameters to your model tensors as needed. Doing this primary in Pytorch would be very slow, especially because transferring parameters between a Cuda mounted Pytorch variable and a pinned CPU pytorch tensor can take 2.5-3 seconds (on Google Colab). fortunately,
+this step only takes 0.02-0.03 seconds with SpeedTorch!
+
+#### Case Uses
+
+##### 2,829,853 book embeddings
+
+SpeedTorch was used in training 2,829,853 books for a rare book recommender.
+https://github.com/Santosh-Gupta/Lit2Vec2
+Each book had an embedding of size of 400. 
+
+Here is a directly link to the training notebook
+https://colab.research.google.com/drive/1NL5ih4GUdpBufoiLTggxZ89BhulPASmX
+
+
+
+
+
+This has allowed me to increase the size of the embeddings I have used in two projects. 
 
 ## Examples
 
@@ -140,6 +158,10 @@ https://colab.research.google.com/drive/1cYb6f3DD1FP2PVSZaC8Jz8uP3BgoR7oe
 ## Need Help?
 
 Either open an issue, or chat with me directory on Gitter here https://gitter.im/SpeedTorch
+
+## Future Work
+
+Altough Pytorch cuda tensors about 2-3x slower than Cupy cuda tensors for a complete to/from transfer step to a Pytorch cuda variable, they take up less memory. So for those who have a bigger concern about the GPU memory than the training speed, a combination of CPU Pinned Cupy tensors and GPU Pytorch Tensors is most ideal. 
 
 ### Documentation 
 
