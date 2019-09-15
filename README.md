@@ -139,7 +139,7 @@ tl;dr:
 In sparse training algorithms like word2vec, GloVe, or Neural Collaborative Filtering, only a fraction of the total parameters (embeddngs) are trained during every step. If your GPU can not handle all of your embeddings at a desired embedding size, an option would be to host some of your parameters on pinned CPU Cupy arrays, and transfer those parameters to your model tensors as needed. Doing this primary in Pytorch would be very slow, especially because transferring parameters between a Cuda mounted Pytorch variable and a pinned CPU pytorch tensor can take 2.5-3 seconds (on Google Colab). fortunately,
 this step only takes 0.02-0.03 seconds with SpeedTorch!
 
-**Case Uses**
+**Case Uses :**
 
 --2,829,853 book embeddings--
 
