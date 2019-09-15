@@ -38,7 +38,9 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 ### Speed
 
 Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with both pinned CPU and Cuda. 
+
 https://colab.research.google.com/drive/1b3QpfSETePo-J2TjyO6D2LgTCjVrT1lu
+
 This notebook times data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy and Pytorch variables, each holding 1,000,000 float32 embeddings of dimension 128. 
 
 The table below is a summary of the results. Transfering data from Cuda Pytorch tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equiviliant, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivilant for both the regular GPU and CPU Pinned tensors, making SpeedTorch the better choice for Sparse training. 
@@ -139,14 +141,20 @@ this step only takes 0.02-0.03 seconds with SpeedTorch!
 ##### 2,829,853 book embeddings
 
 SpeedTorch was used in training 2,829,853 books for a rare book recommender.
+
 https://github.com/Santosh-Gupta/Lit2Vec2
+
 https://devpost.com/software/lit2vec2
+
 Each book had an embedding of size of 400, but an embedding size of 496 could have been used, the 400 embedding size was due to limits of space on my Google Drive to store the trained embeddings :(. But the limits of the GPU RAM is no longer an issue :)
 Here is a directly link to a demo training notebook which trains using the 496 embedding size using SpeedTorch
+
 https://colab.research.google.com/drive/1AqhT-HetihXMET1wJQROrC3Q9tFJqJ19
 
 Here is a directly link with the same model and data, but doesn't use SpeedTorch
+
 https://colab.research.google.com/drive/1idV1jBOUZVPCfdsy40wIrRPHeDOanti_
+
 Using the orthodox training method, the largest embedding size that colab is able to handle is 255-260, any higher than that and cuda error will occur
 
 `RuntimeError: CUDA out of memory. Tried to allocate 2.74 GiB (GPU 0; 11.17 GiB total capacity; 8.22 GiB already allocated; 2.62 GiB free; 5.05 MiB cached)`
