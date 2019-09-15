@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/FKgPbsC.png">
+  <img src="https://i.imgur.com/wr4VaUV.png?1">
 </p>
 
 # SpeedTorch
