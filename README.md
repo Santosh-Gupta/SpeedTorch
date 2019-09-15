@@ -157,6 +157,7 @@ Using the orthodox training method, the largest embedding size that colab is abl
 
 2) If you're able to fit all of your parameters in your GPU memory, go with that as this is the fastest option. But if you can't, split your parameters (keep in mind that your optimizers also have weights) between SpeedTorch's Cupy cuda tensors and SpeedTorch's pinned CPU tensors, this is the 2nd fastest options. But, if you're still not able to fit all your parameters that way, then split your parameters between SpeedTorch's Cupy pinned CPU tensors, and SpeedTorch's Pytorch cuda tensors; this is slower than the 2nd option, but is more GPU memory efficient. 
 
+3) After training, saving any cuda variables will cause an increase in memory usage, and may cause a crash if you're at the limits of your RAM. In this case, use the `getNumpyVersion` method to get a numpy version of your tensor, and then use use numpy.save or hdpy/pytables to save your numpy array. 
 
 ## Need Help?
 
@@ -166,6 +167,12 @@ Either open an issue, or chat with me directory on Gitter here https://gitter.im
 
 I am looking incoporate more functionalities around the fast CPU -> GPU transfer. If you have an idea, please post a Github Issue. 
 
+## Experimental
+
+In addition the the Cupy GPU/pinned CPU and Pytorch GPU tensors, SpeedTorch also has Pytorch pinned CPU tensors, and Cupy memmap GPU/pinned CPU tensors. I have not found a solid use for these sorts of tensors, but they're fully coded and availible for use. 
+
+https://github.com/Santosh-Gupta/SpeedTorch/tree/master/SpeedTorch
+
 ## Documentation 
 
 ### Class ModelFactory
@@ -174,7 +181,7 @@ I am looking incoporate more functionalities around the fast CPU -> GPU transfer
 ModelFactory(model_variable,  total_classes,  embed_dimension, datatype = 'float32', CPUPinn = False)
 ```
 
-Creates switchers for model variables. Switches variables from your full embedding collection and your model batch collection. Each variable needs its own switcher. 
+Creates switchers for model variables using Cupy. Switches variables from your full embedding collection and your model batch collection. Each variable needs its own switcher. 
 
 Example:
 
@@ -216,7 +223,7 @@ Methods:
 OptimizerFactory( given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32' , CPUPinn = False)
 ```
 
-Creates switchers for optimizer variables. Switches variables from your full embedding collection and your optimizer batch collection. Each variable needs its own switcher. 
+Creates switchers for optimizer variables using Cupy. Switches variables from your full embedding collection and your optimizer batch collection. Each variable needs its own switcher. 
 
 Example:
 
@@ -247,3 +254,28 @@ Methods:
 `beforeForwardPass(retrievedPosIndexes , retrievedNegIndexes = None)`: Switches optimizer variable weights from the full weights collection to optimizer weight tensor. `retrievedPosIndexes` is the indexes of the positive samples to be retrieved. If negative samples are to be retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
 
 `afterOptimizerStep( retrievedPosIndexes , retrievedNegIndexes = None)`: Switches optimizer variable weights from your optimizer to the full weights collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
+
+### Class DataGadget
+
+Creates a tensor whose main function is to transfer it's contents to a Pytorch cuda variable. 
+
+```pyton
+DataGadget( fileName, CPUPinn=False)
+```
+
+Arguments:
+
+`fileName`: Location of data .npy file to be opened
+
+`CPUPinn`:  (optional): Pin your data to CPU. Default is False. 
+
+Methods:
+
+`getData(indexes)`: Retrieves data in a format that is ready to be accepted by a Pytorch Cuda Variable. `indexes` is the indexes of the tensor from which to retrieve data from. 
+
+`insertData(dataObject, indexes)`: Insert data from a Pytorch Cuda Variable. `dataObject` is the Pytorch cuda variable tensor data from which the data is is going to be retrived from, and `indexes` of the tensor from which to retrieve data from. 
+
+Please see this notebook on how to use the data gadget
+
+https://colab.research.google.com/drive/185Z5Gi62AZxh-EeMfrTtjqxEifHOBXxF
+
