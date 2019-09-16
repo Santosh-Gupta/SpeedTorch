@@ -22,7 +22,7 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 🏎️    Incorporate SpeedTorch into your data pipelines for fast data transfer to/from CPU <-> GPU
 
-🏎️    Augment training parameters via CPU storage, by nearly double.
+🏎️    Augment training parameters via CPU storage. As long as you have enough CPU RAM, you can host any number of embeddings without having to worry about the GPU RAM.
 
 🏎️    Use Adadelta, Adamax, RMSprop, Rprop, ASGD, AdamW, and Adam optimizers for sparse embeddings training. Previously, only SpraseAdam, Adagrad, and SGD were suitable since only these directly support sprase gradients. 
 
