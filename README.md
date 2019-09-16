@@ -367,7 +367,7 @@ uAdagrad_switcher = SpeedTorch.OptimizerFactory(given_optimizer,  total_classes,
 
 Arguments:
 
-`given_optimizer`: The optimizer initialized with your model weights. 
+`given_optimizer`: The optimizer initialized with your model weights. If using for embeddings training, remember to set the `sparse` parameter to `False`. Currently, supported optimizers are SparseAdam, Adadelta, Adamax, Adam, AdamW, ASGD, and RMSprop. Rprop is also inlcuded, but needs the first forward pass, and `loss.backward()` step to be completed for initializing the OptimizerFactory instance. This is due to the Rprop optimizer needing gradients of its parameters for initialization.  
 
 `total_classes`: The total amount of embeddings to be trained. 
 
