@@ -28,6 +28,9 @@ class _Common():
 
     def saveCupy(self, saveFileName):
         cupy.save( saveFileName, self.CUPYcorpus)
+        
+    def loadCupy(self, loadFileName):
+        self.CUPYcorpus = cupy.load( loadFileName )
 
     def getNumpyVersion(self):
         return cupy.asnumpy(self.CUPYcorpus)
