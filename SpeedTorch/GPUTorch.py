@@ -8,6 +8,9 @@ class _GPUPytorchCommon():
 
     def saveTorch(self, saveFileName):
         torch.save(self.pytorchGPUVar, saveFileName)
+        
+    def loadTorch(self, loadFileName):
+        self.pytorchGPUVar = torch.load(loadFileName)
 
     def getNumpyVersion(self):
         return self.pytorchGPUVar.cpu().numpy()
