@@ -83,14 +83,14 @@ class ModelFactory(_Common):
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
-        self.model_variable.weight.data = (
+        self.model_variable = (
             from_dlpack(self.CUPYcorpus[ reshapedRetrieval ].toDlpack() ) )
 
     def afterOptimizerStep(self,retrievedPosIndexes , retrievedNegIndexes = None):
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         self.CUPYcorpus[ reshapedRetrieval ] = (
-            cupy.fromDlpack( to_dlpack( self.model_variable.weight.data ) ) )
+            cupy.fromDlpack( to_dlpack( self.model_variable ) ) )
         
     
 class OptimizerFactory(_Common): #to do later, able to load matrixes to continue training
