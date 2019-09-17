@@ -44,7 +44,7 @@ https://colab.research.google.com/drive/1b3QpfSETePo-J2TjyO6D2LgTCjVrT1lu
 
 This notebook times the data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy/Pytorch tensors and Pytorch variables.
 
-The table below is a summary of the results. Transfering data from  Pytorch cuda tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equivalent, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transfering to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivalent for both the regular GPU and CPU Pinned tensors. 
+The table below is a summary of the results. Transfering data from  Pytorch cuda tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equivalent, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transferring to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivalent for both the regular GPU and CPU Pinned tensors. 
 
 I have noticed that different instances of Colab result in different speed results, so keep this in mind while reviewing these results. A personal run of the colab notebook may result in different values, though the order of magnetude of the results are generally the same. 
 
@@ -71,13 +71,13 @@ The transfer times in the following tables are given in seconds.
 | Pytorch(cuda)	| 0.0463	| 2.6x Slower than SpeedTorch Equivalent |
 | Pytorch(PinnedCPU)	| 2.9223	| 57.4x Slower than SpeedTorch Equivalent |
 
-Similar benchmarks were calculated for transfering to/from Pytorch Cuda optimizers. The results are basically the same, here is the notebook used for the optimizers benchmarking
+Similar benchmarks were calculated for transferring to/from Pytorch Cuda optimizers. The results are basically the same, here is the notebook used for the optimizers benchmarking
 
 https://colab.research.google.com/drive/1Y2nehd8Xj-ixfjkj2QWuA_UjQjBBHhJ5
 
 ### Memory 
 
-Although SpeedTorch's tensors are generally faster than Pytorch's, the drawback is SpeedTorch's tensors use more memory. However, because transfering data can happen more quickly, you can use SpeedTorch to augment the number of embeddings trained in your architecture by holding parameters in both the GPU And CPU. 
+Although SpeedTorch's tensors are generally faster than Pytorch's, the drawback is SpeedTorch's tensors use more memory. However, because transferring data can happen more quickly, you can use SpeedTorch to augment the number of embeddings trained in your architecture by holding parameters in both the GPU And CPU. 
 
 This table is a summary of benchmarking done in Google Colab. From my experience, there seems to be some variation in the reported memory values in Colab, +-0.30 gb, so keep this in mind while reviewing these numbers. The values are for holding a 10,000,000x128 float32 tensor. 
 
