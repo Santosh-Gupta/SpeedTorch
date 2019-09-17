@@ -248,6 +248,12 @@ Methods:
 
 `afterOptimizerStep( retrievedPosIndexes , retrievedNegIndexes = None)`: Switches updated embeddings from your model to the full embeddings collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
 
+`saveCupy(saveFileName)`: Save tensor to .npy file. 
+
+`loadCupy(loadFileName)`: Load tensor from .npy file. 
+
+`getNumpyVersion`: Get numpy version of tensor. 
+
 ### Class OptimizerFactory
 
 ```pyton
@@ -306,6 +312,12 @@ Methods:
 
 `insertData(dataObject, indexes)`: Insert data from a Pytorch Cuda Variable. `dataObject` is the Pytorch cuda variable tensor data from which the data is is going to be retrived from, and `indexes` of the tensor from which to retrieve data from. 
 
+`saveCupy(saveFileName)`: Save tensor to .npy file. 
+
+`loadCupy(loadFileName)`: Load new tensor from .npy file. 
+
+`getNumpyVersion`: Get numpy version of tensor. 
+
 Please see this notebook on how to use the data gadget
 
 https://colab.research.google.com/drive/185Z5Gi62AZxh-EeMfrTtjqxEifHOBXxF
@@ -343,13 +355,20 @@ Methods:
 
 `normalDistributionInit(mean, stdDev)`: Initializes the variable switcher full collection with a normal distribution with a mean of `mean` and a standard deviation of `stdDev`
 
-`customInit( initFunction, *args)`: Use any Pytorch initializer for the variable switchers full collection. Pass the initializer using `initFunction` and its corresponding arguments using `*args`.
+`customInit(initFunction, *args)`: Use any Pytorch initializer for the variable switchers full collection. Pass the initializer using `initFunction` and its corresponding arguments using `*args`.
 
-`variableTransformer( batchSize, posPerBatch,  negPerBatch = None )`: Sets up a dummy input to be used for the forward step of you model. `batchSize` is the size of your batch, and `posPerBatch` is the number of positive examples per batch. If a second dummy input is needed for the negative examples, `negPerBatch` (optional) can be set to the number of negative examples, and two dummy inputs will be returned instead of one. 
+`variableTransformer(batchSize, posPerBatch,  negPerBatch = None )`: Sets up a dummy input to be used for the forward step of you model. `batchSize` is the size of your batch, and `posPerBatch` is the number of positive examples per batch. If a second dummy input is needed for the negative examples, `negPerBatch` (optional) can be set to the number of negative examples, and two dummy inputs will be returned instead of one. 
 
 `beforeForwardPass(retrievedPosIndexes , retrievedNegIndexes = None)`: Switches embeddings from the full embeddings collection to your model embeddings. `retrievedPosIndexes` is the indexes of the positive samples to be retrieved. If negative samples are to be retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
 
-`afterOptimizerStep( retrievedPosIndexes , retrievedNegIndexes = None)`: Switches updated embeddings from your model to the full embeddings collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
+`afterOptimizerStep(retrievedPosIndexes , retrievedNegIndexes = None)`: Switches updated embeddings from your model to the full embeddings collection. `retrievedPosIndexes` is the indexes of the positive samples that were retrieved. If negative samples were retrieved as well, a value for `retrievedNegIndexes` (optional) can be passed as well. 
+
+`saveTorch(saveFileName)`: Save tensor to file using torch.save
+
+`loadTorch(loadFileName)`: Load tensor using torch.load
+
+`getNumpyVersion`: Get numpy version of tensor. 
+
 
 ### Class GPUPytorchOptimizerFactory
 
