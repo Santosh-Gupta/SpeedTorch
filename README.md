@@ -100,7 +100,7 @@ If using this in Colab, you will need to restart the enviroment after each tenso
 
 For the CPU<->GPU transfer, it depends on the amount of data being transfered, and the number of CPU cores you have. Generally for 1-2 CPU cores SpeedTorch will be much faster. But as the number of CPU cores goes up, Pytorch's CPU<->GPU indexing operations get more efficient. For more details on this, please see the next 'How it works' section. For an easy way to see if you get a speed advantage in your system, please run the benchmarking code on your system, but change the amount of data to reflect the amount that you will be working with in your application. 
 
-For the  GPU <-> GPU transfer, If using ordinary indexing notations in vanilla Pytorch, all systems will get a speed increase because  advantage is due to a bug in Pytorch's indexing operations. But this bug can be avoided if using the nightly version or just using different indexing notions, please see the 'How it works' section for more details. 
+For the  GPU <-> GPU transfer, if using ordinary indexing notations in vanilla Pytorch, all systems will get a speed increase because SpeedTorch bypasses a bug in Pytorch's indexing operations. But this bug can be avoided if using the nightly version, or just using different indexing notions, please see the 'How it works' section for more details. 
 
 ## How it works?
 
