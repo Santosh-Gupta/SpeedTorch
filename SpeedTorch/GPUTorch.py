@@ -54,11 +54,17 @@ class GPUPytorchModelFactory(_GPUPytorchCommon):
             return np.arange( batchSize*posPerBatch ).reshape( batchSize, posPerBatch )
 
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         self.model_variable.weight.data = self.pytorchGPUVar[ reshapedRetrieval ]
 
     def afterOptimizerStep(self,retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         self.pytorchGPUVar[ reshapedRetrieval ] = self.model_variable.weight.data
@@ -177,12 +183,18 @@ class GPUPytorchOptimizerFactory(_GPUPytorchCommon): #to do later, able to load 
             self.pytorchGPUVar.append( torch.zeros( size=(self.total_classes, self.embed_dimension), dtype=self.dtype, device = 'cuda') )
             
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         for idx, optVar in enumerate(self.optVarList):
             self.given_optimizer.state_dict()['state'][ self.optimizerKey ][optVar] = self.pytorchGPUVar[idx][ reshapedRetrieval ]
 
     def afterOptimizerStep(self, retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         for idx, optVar in enumerate(self.optVarList):
