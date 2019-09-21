@@ -81,12 +81,18 @@ class ModelFactory(_Common):
             return np.arange( batchSize*posPerBatch ).reshape( batchSize, posPerBatch )
 
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         self.model_variable.weight.data = (
             from_dlpack(self.CUPYcorpus[ reshapedRetrieval ].toDlpack() ) )
 
     def afterOptimizerStep(self,retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         self.CUPYcorpus[ reshapedRetrieval ] = (
@@ -214,6 +220,9 @@ class OptimizerFactory(_Common): #to do later, able to load matrixes to continue
             cupy.cuda.set_allocator(None)
             
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         for idx, optVar in enumerate(self.optVarList):
@@ -221,6 +230,9 @@ class OptimizerFactory(_Common): #to do later, able to load matrixes to continue
                 from_dlpack( self.CUPYcorpi[idx][ reshapedRetrieval ].toDlpack() )   )
 
     def afterOptimizerStep(self, retrievedPosIndexes , retrievedNegIndexes = None):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
         for idx, optVar in enumerate(self.optVarList):
@@ -256,9 +268,15 @@ class DataGadget(_Common):
             cupy.cuda.set_allocator(None)
 
     def getData(self, indexes):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
         return from_dlpack( self.CUPYcorpus[indexes].toDlpack() )
 
     def insertData(self, dataObject, indexes):
+        torch.cuda.synchronize()
+        cupy.cuda.Device().synchronize()
+        
          self.CUPYcorpus[indexes] =  (
             cupy.fromDlpack( to_dlpack( dataObject ) ) )
     
