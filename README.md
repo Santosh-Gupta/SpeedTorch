@@ -104,7 +104,7 @@ For the  GPU <-> GPU transfer, if using ordinary indexing notations in vanilla P
 
 ## How it works?
 
-Update 9-20-19: I initially had no idea why this is faster than using Pytorch tensors, but one of the Pytorch developers on the Pytorch forum pointed it out. 
+Update 9-20-19: I initially had no idea why this is faster than using Pytorch tensors; I stumbled upon the speed advantage by accident. But one of the Pytorch developers on the Pytorch forum pointed it out. 
 
 As for the better CPU<->GPU transfer, it's because SpeedTorch avoids a CPU indexing operation by masquarding CPU tensors as GPU tensors. The CPU index operation may be slow if working on with very few CPU cores, such as 2 in colab, but may be faster if you have many cores.  It depends on how much you're transfering, and what data you're using. 
 
