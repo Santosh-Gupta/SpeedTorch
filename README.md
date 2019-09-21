@@ -6,11 +6,15 @@
 
 [![Join the chat at https://gitter.im/SpeedTorch/community](https://badges.gitter.im/SpeedTorch/community.svg)](https://gitter.im/SpeedTorch/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Library for faster pinned CPU tensor <-> GPU Pytorch variabe transfer and GPU tensor <-> GPU Pytorch variable transfer, in certain cases. 
+Assist in embeddings training by hosting non-trained embeddings on CPU. 
+
+Faster pinned CPU tensor <-> GPU Pytorch variabe transfer and GPU tensor <-> GPU Pytorch variable transfer, in certain cases. 
 
 ## What is it?
 
 This library revovles around Cupy tensors pinned to CPU, which can achieve **3.1x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can, and **410x** faster GPU -> CPU transfer. Speed depends on amount of data, and number of CPU cores on your system (see the How it Works section for more details)
+
+The library includes functions for embeddings training; it can host embeddings on CPU RAM when they're not being trained, sparing GPU RAM. 
 
 ## Inspiration
 
