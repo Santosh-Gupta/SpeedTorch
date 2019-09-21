@@ -6,11 +6,11 @@
 
 [![Join the chat at https://gitter.im/SpeedTorch/community](https://badges.gitter.im/SpeedTorch/community.svg)](https://gitter.im/SpeedTorch/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Library for fastest pinned CPU <-> GPU Pytorch transfer 
+Library for fastest pinned CPU tensor <-> GPU Pytorch variabe transfer 
 
 ## What is it?
 
-This library revovles around Cupy tensors pinned to CPU, which can achieve **3.1x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can, and **410x** faster GPU -> CPU transfer. 
+This library revovles around Cupy tensors pinned to CPU, which can achieve **3.1x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can, and **410x** faster GPU -> CPU transfer. Speed depends on amount of data, and number of CPU cores on your system (see the How it Works section for more details)
 
 ## Inspiration
 
