@@ -226,7 +226,7 @@ In addition the the Cupy GPU/pinned CPU and Pytorch GPU tensors, SpeedTorch also
 
 https://github.com/Santosh-Gupta/SpeedTorch/tree/master/SpeedTorch
 
-One area I would like to look at is if there is a way to have RAM memory reduction by using Cupy Memmaps. So far they uses just as much memory as the live versions. 
+One area I would like to look at is if there is a way to have RAM memory reduction by using Cupy Memmaps. So far they use just as much memory as the live versions. 
 
 ## Documentation 
 
