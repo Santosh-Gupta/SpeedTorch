@@ -96,9 +96,25 @@ This is the notebook I used for measuring how much memory each variable type tak
 https://colab.research.google.com/drive/1ZKY7PyuPAIDrnx2HdtbujWo8JuY0XkuE
 If using this in Colab, you will need to restart the enviroment after each tensor creation, to get a measure for the next tensor. 
 
+## What systems get a speed advantage?
+
+For the CPU<->GPU transfer, it depends on the amount of data being transfered, and the number of CPU cores you have. Generally for 1-2 CPU cores SpeedTorch will be much faster. But as the number of CPU cores goes up, Pytorch's CPU<->GPU indexing operations get more efficient. For more details on this, please see the next 'How it works' section. For an easy way to see if you get a speed advantage in your system, please run the benchmarking code on your system, but change the amount of data to reflect the amount that you will be working with in your application. 
+
+For the  GPU <-> GPU transfer, If using ordinary indexing notations in vanilla Pytorch, all systems will get a speed increase because  advantage is due to a bug in Pytorch's indexing operations. But this bug can be avoided if using the nightly version or just using different indexing notions, please see the 'How it works' section for more details. 
+
 ## How it works?
 
-I am not exactly sure why Cupy arrays are generally better for data transfer to/from Pytorch variables. As for how the memory management in Cupy works, I direct to these two stackoverflow questions I asked, where brilliant user Robert Crovella not only gave detailed explanations, but also figured out how to allocate pinned memory to Cupy arrays by developing his own memory allocator for Cupy. This is basically the core technology behind SpeedTorch. 
+Update 9-20-19: I initially had no idea why this is faster than using Pytorch tensors, but one of the Pytorch developers on the Pytorch forum pointed it out. 
+
+As for the better CPU<->GPU transfer, it's because SpeedTorch avoids a CPU indexing operation by masquarding CPU tensors as GPU tensors. The CPU index operation may be slow if working on with very few CPU cores, such as 2 in colab, but may be faster if you have many cores.  It depends on how much you're transfering, and what data you're using. 
+
+As for the better GPU<->GPU transfer, it's because SpeedTorch avoids a but in the indexing operation. This bug can also be avoided by using the nightly builds, or using `index_select` / `index_copy_` instead of `a[idx]` notation in 1.1/1.2. 
+
+For more details of this, please see this Pytorch post
+
+https://discuss.pytorch.org/t/introducing-speedtorch-4x-speed-cpu-gpu-transfer-110x-gpu-cpu-transfer/56147/2
+
+As for how the memory management in Cupy works, I direct to these two stackoverflow questions I asked, where brilliant user Robert Crovella not only gave detailed explanations, but also figured out how to allocate pinned memory to Cupy arrays by developing his own memory allocator for Cupy. This is basically the core technology behind SpeedTorch. 
 
 https://stackoverflow.com/questions/57750125/cupy-outofmemoryerror-when-trying-to-cupy-load-larger-dimension-npy-files-in-me
 
