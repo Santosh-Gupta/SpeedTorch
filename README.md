@@ -10,7 +10,7 @@ Library for fastest pinned CPU <-> GPU Pytorch transfer
 
 ## What is it?
 
-This library revovles around Cupy tensors pinned to CPU, which can achieve **4x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can, and **110x** faster GPU -> CPU transfer. 
+This library revovles around Cupy tensors pinned to CPU, which can achieve **3.1x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can, and **410x** faster GPU -> CPU transfer. 
 
 ## Inspiration
 
@@ -98,7 +98,7 @@ If using this in Colab, you will need to restart the enviroment after each tenso
 
 ## What systems get a speed advantage?
 
-For the CPU<->GPU transfer, it depends on the amount of data being transfered, and the number of CPU cores you have. Generally for 1-2 CPU cores SpeedTorch will be much faster. But as the number of CPU cores goes up, Pytorch's CPU<->GPU indexing operations get more efficient. For more details on this, please see the next 'How it works' section. For an easy way to see if you get a speed advantage in your system, please run the benchmarking code on your system, but change the amount of data to reflect the amount that you will be working with in your application. 
+For the CPU<->GPU transfer, it depends on the amount of data being transfered, and the number of cores you have. Generally for 1-2 CPU cores SpeedTorch will be much faster. But as the number of CPU cores goes up, Pytorch's CPU<->GPU indexing operations get more efficient. For more details on this, please see the next 'How it works' section. For an easy way to see if you get a speed advantage in your system, please run the benchmarking code on your system, but change the amount of data to reflect the amount that you will be working with in your application. 
 
 For the  GPU <-> GPU transfer, if using ordinary indexing notations in vanilla Pytorch, all systems will get a speed increase because SpeedTorch bypasses a bug in Pytorch's indexing operations. But this bug can be avoided if using the nightly version, or just using different indexing notions, please see the 'How it works' section for more details. 
 
@@ -106,9 +106,9 @@ For the  GPU <-> GPU transfer, if using ordinary indexing notations in vanilla P
 
 Update 9-20-19: I initially had no idea why this is faster than using Pytorch tensors; I stumbled upon the speed advantage by accident. But one of the Pytorch developers on the Pytorch forum pointed it out. 
 
-As for the better CPU<->GPU transfer, it's because SpeedTorch avoids a CPU indexing operation by masquarding CPU tensors as GPU tensors. The CPU index operation may be slow if working on with very few CPU cores, such as 2 in colab, but may be faster if you have many cores.  It depends on how much you're transfering, and what data you're using. 
+As for the better CPU<->GPU transfer, it's because SpeedTorch avoids a CPU indexing operation by masquarding CPU tensors as GPU tensors. The CPU index operation may be slow if working on with very few CPU cores, such as 2 in colab, but may be faster if you have many cores.  It depends on how much data you're transfering and how many cores you have. 
 
-As for the better GPU<->GPU transfer, it's because SpeedTorch avoids a but in the indexing operation. This bug can also be avoided by using the nightly builds, or using `index_select` / `index_copy_` instead of `a[idx]` notation in 1.1/1.2. 
+As for the better GPU<->GPU transfer, it's because SpeedTorch avoids a bug in the indexing operation. This bug can also be avoided by using the nightly builds, or using `index_select` / `index_copy_` instead of `a[idx]` notation in 1.1/1.2. 
 
 For more details of this, please see this Pytorch post
 
