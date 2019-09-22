@@ -436,8 +436,13 @@ Methods:
 If you use SpeedTorch in your research or wish to cite, please cite with:
 
 @misc{
+
   title={SpeedTorch},
+  
   author={Santosh Gupta},
+  
   howpublished={\url{github.com/Santosh-Gupta/SpeedTorch}},
+  
   year={2019}
+  
 }
