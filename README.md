@@ -47,7 +47,7 @@ Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with bo
 
 https://colab.research.google.com/drive/1PXhbmBZqtiq_NlfgUIaNpf_MfpiQSKKs
 
-This notebook times the data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy/Pytorch tensors and Pytorch variables, with n=100. 
+This notebook times the data transfer of 131,072 float32 embeddings of dimension 128, to and from the Cupy/Pytorch tensors and Pytorch variables, with n=100. Google Colab's CPU has 2 cores, which has an impact on the transfer speed. CPU's with a higher number of cores will see less of an advatage to using SpeedTorch. 
 
 The table below is a summary of the results. Transfering data from  Pytorch cuda tensors to the Cuda Pytorch embedding variable is faster than the SpeedTorch equivalent, but for all other transfer types, SpeedTorch is faster. And for the sum of both steps transferring to/from the Cuda Pytorch embedding, SpeedTorch is faster than the Pytorch equivalent for both the regular GPU and CPU Pinned tensors. 
 
