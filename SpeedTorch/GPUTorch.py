@@ -55,7 +55,6 @@ class GPUPytorchModelFactory(_GPUPytorchCommon):
 
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
         torch.cuda.synchronize()
-        cupy.cuda.Device().synchronize()
         
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
@@ -63,7 +62,6 @@ class GPUPytorchModelFactory(_GPUPytorchCommon):
 
     def afterOptimizerStep(self,retrievedPosIndexes , retrievedNegIndexes = None):
         torch.cuda.synchronize()
-        cupy.cuda.Device().synchronize()
         
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
@@ -184,7 +182,6 @@ class GPUPytorchOptimizerFactory(_GPUPytorchCommon): #to do later, able to load 
             
     def beforeForwardPass(self, retrievedPosIndexes , retrievedNegIndexes = None):
         torch.cuda.synchronize()
-        cupy.cuda.Device().synchronize()
         
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
@@ -193,7 +190,6 @@ class GPUPytorchOptimizerFactory(_GPUPytorchCommon): #to do later, able to load 
 
     def afterOptimizerStep(self, retrievedPosIndexes , retrievedNegIndexes = None):
         torch.cuda.synchronize()
-        cupy.cuda.Device().synchronize()
         
         reshapedRetrieval = self._getReshapedRetrieval( retrievedPosIndexes, retrievedNegIndexes )
 
