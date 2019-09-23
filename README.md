@@ -13,7 +13,7 @@ Faster pinned CPU tensor <-> GPU Pytorch variabe transfer and GPU tensor <-> GPU
 
 This library revovles around Cupy tensors pinned to CPU, which can achieve **3.1x** faster CPU -> GPU transfer than regular Pytorch Pinned CPU tensors can, and **410x** faster GPU -> CPU transfer. Speed depends on amount of data, and number of CPU cores on your system (see the How it Works section for more details)
 
-The library includes functions for embeddings training; it can host embeddings on CPU RAM when they're not being trained, sparing GPU RAM. 
+The library includes functions for embeddings training; it can host embeddings on CPU RAM while they are idle, sparing GPU RAM. 
 
 ## Inspiration
 
@@ -109,7 +109,7 @@ For the  GPU <-> GPU transfer, if using ordinary indexing notations in vanilla P
 
 Update 9-20-19: I initially had no idea why this is faster than using Pytorch tensors; I stumbled upon the speed advantage by accident. But one of the Pytorch developers on the Pytorch forum pointed it out. 
 
-As for the better CPU<->GPU transfer, it's because SpeedTorch avoids a CPU indexing operation by masquarding CPU tensors as GPU tensors. The CPU index operation may be slow if working on with very few CPU cores, such as 2 in colab, but may be faster if you have many cores.  It depends on how much data you're transfering and how many cores you have. 
+As for the better CPU<->GPU transfer, it's because SpeedTorch avoids a CPU indexing operation by masquarding CPU tensors as GPU tensors. The CPU index operation may be slow if working on with very few CPU cores, such as 2 in Google Colab, but may be faster if you have many cores.  It depends on how much data you're transfering and how many cores you have. 
 
 As for the better GPU<->GPU transfer, it's because SpeedTorch avoids a bug in the indexing operation. This bug can also be avoided by using the nightly builds, or using `index_select` / `index_copy_` instead of `a[idx]` notation in 1.1/1.2. 
 
