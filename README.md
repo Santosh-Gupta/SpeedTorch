@@ -117,6 +117,8 @@ For more details of this, please see this Pytorch post
 
 https://discuss.pytorch.org/t/introducing-speedtorch-4x-speed-cpu-gpu-transfer-110x-gpu-cpu-transfer/56147/2
 
+where a Pytorch engineer gives a detailed analysis on how the Cupy indexing kernals are resulting in speed ups in certain cases. It's not the transfer itself that is getting faster, but the indexing kernals which are being used. 
+
 As for how the memory management in Cupy works, I direct to these two stackoverflow questions I asked, where brilliant user Robert Crovella not only gave detailed explanations, but also figured out how to allocate pinned memory to Cupy arrays by developing his own memory allocator for Cupy. This is basically the core technology behind SpeedTorch. 
 
 https://stackoverflow.com/questions/57750125/cupy-outofmemoryerror-when-trying-to-cupy-load-larger-dimension-npy-files-in-me
