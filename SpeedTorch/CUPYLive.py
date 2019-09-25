@@ -277,8 +277,7 @@ class DataGadget(_Common):
         torch.cuda.synchronize()
         cupy.cuda.Device().synchronize()
         
-        self.CUPYcorpus[indexes] =  (
-            cupy.fromDlpack( to_dlpack( dataObject ) ) )
+        self.CUPYcorpus[indexes] =  cupy.fromDlpack( to_dlpack( dataObject ) ) 
     
     
     
