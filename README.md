@@ -8,6 +8,9 @@
 
 Faster pinned CPU tensor <-> GPU Pytorch variabe transfer and GPU tensor <-> GPU Pytorch variable transfer, in certain cases. 
 
+## Update 9-29-19
+
+Since for some systems, using the pinned Pytorch CPU tensors is faster than using Cupy tensors (see 'How It Works' section for more detail), I created general Pytorch tensor classes `PytorchModelFactory` and `PytorchOptimizerFactory` which can specifiy either setting the tensors to `cuda` or `cpu`, and if using `cpu`, if its memory should be pinned. The original `GPUPytorchModelFactory` and `GPUPytorchOptimizerFactory` classes are still in the library, so no existing code using SpeedTorch should be affected. The documentation has been updated to include these new classes. 
 
 ## What is it?
 
