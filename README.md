@@ -411,7 +411,7 @@ Creates switchers for optimizer variables using Cupy. Switches variables from yo
 Example:
 
 ```python
-uAdagrad_switcher = SpeedTorch.PytorchOptimizerFactory(given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32', CPUPinn = False)
+uAdagrad_switcher = SpeedTorch.PytorchOptimizerFactory(given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32')
 ```
 
 Arguments:
