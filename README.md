@@ -355,7 +355,7 @@ https://colab.research.google.com/drive/185Z5Gi62AZxh-EeMfrTtjqxEifHOBXxF
 PytorchModelFactory(model_variable,  total_classes,  embed_dimension, datatype = 'float32', deviceType = 'cuda', pinType = False)
 ```
 
-Creates switchers for model variables using Pytorch cuda tensors. Switches variables from your full embedding collection and your model batch collection. Each variable needs its own switcher. 
+Creates switchers for model variables using Pytorch tensors. Switches variables from your full embedding collection and your model batch collection. Each variable needs its own switcher. 
 
 Example:
 
@@ -373,7 +373,7 @@ Arguments:
 
 `datatype` (optional): Datatype for the variable. Default is 'float32'. 
 
-`deviceType` (optional): Get device either to 'cuda' or 'cpu'. Default is 'cuda'
+`deviceType` (optional): Set device either to 'cuda' or 'cpu'. Default is 'cuda'
 
 `pinType` (optional): If device is set to 'cpu', you can specify using pinned memory. Default is 'False'. 
 
@@ -406,7 +406,7 @@ Methods:
 PytorchOptimizerFactory( given_optimizer,  total_classes,  embed_dimension, model, variable_name, dtype='float32', deviceType = 'cuda', pinType = False)
 ```
 
-Creates switchers for optimizer variables using Cupy. Switches variables from your full embedding collection and your optimizer batch collection. Each variable needs its own switcher. 
+Creates switchers for optimizer variables using Pytorch tensors. Switches variables from your full embedding collection and your optimizer batch collection. Each variable needs its own switcher. 
 
 Example:
 
@@ -428,7 +428,7 @@ Arguments:
 
 `dtype` (optional): Data type of your variable. Default is 'float32'
 
-`deviceType` (optional): Get device either to 'cuda' or 'cpu'. Default is 'cuda'
+`deviceType` (optional): Set device either to 'cuda' or 'cpu'. Default is 'cuda'
 
 `pinType` (optional): If device is set to 'cpu', you can specify using pinned memory. Default is 'False'. 
 
