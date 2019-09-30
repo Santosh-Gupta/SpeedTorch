@@ -22,7 +22,7 @@ class _PytorchCommon():
             reshapedRetrieval = retrievedPosIndexes.reshape(-1)
         return reshapedRetrieval
 
-class PytorchModelFactory(_GPUPytorchCommon):
+class PytorchModelFactory(_PytorchCommon):
 
     def __init__(self, model_variable, total_classes, embed_dimension, datatype = torch.float, deviceType = 'cuda', pinType = False):
         self.model_variable = model_variable
