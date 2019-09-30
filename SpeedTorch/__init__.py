@@ -24,3 +24,8 @@ from SpeedTorch.CPUTorchPinned import _CPUPytorchCommon
 from SpeedTorch.CPUTorchPinned import CPUPytorchModelFactory
 from SpeedTorch.CPUTorchPinned import CPUPytorchOptimizerFactory
 from SpeedTorch.CPUTorchPinned import CPUPytorchCOM
+
+from SpeedTorch.GenTorch import _PytorchCommon
+from SpeedTorch.GenTorch import PytorchModelFactory
+from SpeedTorch.GenTorch import PytorchOptimizerFactory
+from SpeedTorch.GenTorch import PytorchCOM
