@@ -46,7 +46,9 @@ With fast CPU->GPU, a lot of fun methods can be developed for functionalities wh
 
 (Edit 9-20-19, one of the Pytorch developers pointed out some minor bugs in the original bench marking code, the values and code have been updated)
 
-Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with both pinned CPU and Cuda tensors. All tests were done with a colab instance with a Tesla K80 GPU.
+Here is a notebook comparing transfer via SpeedTorch vs Pytorch tensors, with both pinned CPU and Cuda tensors. All tests were done with a colab instance with a Tesla K80 GPU, and 2 core CPU. 
+
+UPDATE 10-17-19: Google Colab is now standard with 4 core CPUs, so this notebook will give different results than what is reported below, since Pytorch's indexing kernals get more efficient as the number of CPU cores increase. 
 
 https://colab.research.google.com/drive/1PXhbmBZqtiq_NlfgUIaNpf_MfpiQSKKs
 
@@ -56,7 +58,7 @@ The table below is a summary of the results. Transfering data from  Pytorch cuda
 
 I have noticed that different instances of Colab result in different speed results, so keep this in mind while reviewing these results. A personal run of the colab notebook may result in different values, though the order of magnetude of the results are generally the same. 
 
-The transfer times in the following tables are given in seconds. 
+The transfer times in the following tables are given in seconds. This benchmarking was preformed with a colab instance whose CPU has 2 cores. After this project had been released, Colab's upgraded their instances to 4 core CPUs, so the following benchmarking no longer reflects transfer times in Google Colab. 
 
 | Tensor Type	| To Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
