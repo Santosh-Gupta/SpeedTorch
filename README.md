@@ -4,7 +4,7 @@
 
 # SpeedTorch
 
-[![Join the chat at https://gitter.im/SpeedTorch/community](https://badges.gitter.im/SpeedTorch/community.svg)](https://gitter.im/SpeedTorch/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/SpeedTorch/community](https://badges.gitter.im/SpeedTorch/community.svg)](https://gitter.im/SpeedTorch/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Downloads](https://pepy.tech/badge/speedtorch)](https://pepy.tech/project/speedtorch) [![Downloads](https://pepy.tech/badge/speedtorch/week)](https://pepy.tech/project/speedtorch/week)
 
 Faster pinned CPU tensor <-> GPU Pytorch variabe transfer and GPU tensor <-> GPU Pytorch variable transfer, in certain cases. 
 
