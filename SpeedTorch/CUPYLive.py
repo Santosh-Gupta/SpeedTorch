@@ -30,7 +30,11 @@ class _Common():
         cupy.save( saveFileName, self.CUPYcorpus)
         
     def loadCupy(self, loadFileName):
+        if self.CPUPinn == True:
+            cupy.cuda.set_allocator(my_pinned_allocator)
         self.CUPYcorpus = cupy.load( loadFileName )
+        if self.CPUPinn == True:
+            cupy.cuda.set_allocator(None)
 
     def getNumpyVersion(self):
         return cupy.asnumpy(self.CUPYcorpus)
