@@ -58,7 +58,7 @@ The table below is a summary of the results. Transfering data from  Pytorch cuda
 
 I have noticed that different instances of Colab result in different speed results, so keep this in mind while reviewing these results. A personal run of the colab notebook may result in different values, though the order of magnetude of the results are generally the same. 
 
-The transfer times in the following tables are given in seconds. This benchmarking was preformed with a colab instance whose CPU has 2 cores. After this project had been released, Colab's upgraded their instances to 4 core CPUs, so the following benchmarking no longer reflects transfer times in Google Colab. 
+The transfer times in the following tables are given in seconds. This benchmarking was preformed with a colab instance whose CPU has 2 cores. Colab has a Pro version of paid instances which are 4 core CPUs, so the following benchmarking would not reflect for those instances. 
 
 | Tensor Type	| To Cuda Pytorch Variable	| Comparison |
 | --- | --- | --- |
